@@ -82,9 +82,20 @@ __DATA__
 }
 
 .nav {
-  position:fixed; 
-  width:100%; 
-  bottom:0px;
+  text-align: center;
+  position: fixed; 
+  width: 100%; 
+  bottom: 10px;
+}
+
+.nav .left {
+  position: fixed;
+  left: 20px;
+}
+
+.nav .right {
+  position: fixed;
+  right: 20px;
 }
 
 @@ layouts/basic.html.ep
@@ -108,14 +119,12 @@ __DATA__
   </head>
   <body>
     %= content
-    <div class="nav" style="text-align: center;">
-      <button style="float: left;">
+    <div class="nav">
+      <button class="left">
         %= link_to Previous => page => { page => prev_page }
       </button>
-      <span>
-        %= "Page $page / $pages"
-      </span>
-      <button style="float: right;">
+      <span><%= "Page $page / $pages" %></span>
+      <button class="right">
         %= link_to Next => page => { page => next_page }
       </button>
     </div>
