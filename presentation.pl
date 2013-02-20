@@ -33,43 +33,6 @@ app->start;
 
 __DATA__
 
-@@ style.css
-
-body {
-  margin: 20px;
-}
-
-.columns-wrapper {
-  display: table;
-  width: 100%;
-}
-
-.columns {
-  display: table-row;
-}
-
-.columns > .column {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.nav {
-  text-align: center;
-  position: fixed; 
-  width: 100%; 
-  bottom: 10px;
-}
-
-.nav .left {
-  position: fixed;
-  left: 20px;
-}
-
-.nav .right {
-  position: fixed;
-  right: 20px;
-}
-
 @@ layouts/basic.html.ep
 
 <!DOCTYPE html>
