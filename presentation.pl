@@ -4,6 +4,8 @@ use Mojolicious::Lite;
 
 plugin 'PPI';
 
+app->defaults( layout => 'basic' );
+
 helper column => sub { 
   my $self = shift;
   my $content = pop || return;
@@ -91,9 +93,18 @@ __DATA__
 <html>
   <head>
     <title><%= title %></title>
-    %= stylesheet '/style.css'
-    %= stylesheet '/ppi.css'
-    %= javascript '/ppi.js'
+    %= stylesheet 'style.css'
+    %= stylesheet 'ppi.css'
+    %= javascript 'ppi.js'
+    %= javascript 'mousetrap.min.js'
+    %= javascript begin
+      Mousetrap.bind(['right', 'down', 'pagedown'], function(){
+        window.location = "<%= url_for 'page' => { page => next_page } %>";
+      });
+      Mousetrap.bind(['left', 'up', 'pageup'], function(){
+        window.location = "<%= url_for 'page' => { page => prev_page } %>";
+      });
+    % end
   </head>
   <body>
     %= content
@@ -113,8 +124,6 @@ __DATA__
 
 @@ 1.html.ep
 
-% layout 'basic';
-
 %= columns begin
 
   %= column begin
@@ -123,9 +132,6 @@ __DATA__
 
   %= column begin
     %= ppi begin
-use strict;
-use warnings;
-
 use Mojolicious::Lite;
 
 any '/' => sub { shift->render( text => 'Hello World' ) };
@@ -135,3 +141,7 @@ app->start;
   % end
 
 % end
+
+@@ 2.html.ep
+
+Page 2
