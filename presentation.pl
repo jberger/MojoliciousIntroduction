@@ -53,7 +53,7 @@ __DATA__
     % end
   </head>
   <body>
-    <h2><%= title %></h2>
+    <h1 class="center"><%= title %></h1>
     %= content
     <div class="nav">
       <button class="left">
@@ -69,12 +69,27 @@ __DATA__
 
 @@ 1.html.ep
 
-% title 'Columns Testing';
+% title q{Introduction to Mojolicious};
+
+%= tag div => class => center => begin
+  <p>
+    %= image 'unicorn.png'
+  </p>
+% end
+
+@@ 2.html.ep
+
+% title q{Mojolicious::Lite 'Hello World'};
 
 %= columns begin
 
   %= column begin
-    Hi World
+    <ul>
+      %= tag li => 'imports strict, warnings and utf8'
+      %= tag li => q{handles the '/' route}
+      %= tag li => 'renders the text (as text)'
+      %= tag li => 'starts the app'
+    </ul>
   % end
 
   %= column begin
@@ -89,6 +104,3 @@ app->start;
 
 % end
 
-@@ 2.html.ep
-
-Page 2

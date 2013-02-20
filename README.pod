@@ -3,3 +3,5 @@
 This repository is for the talk I will be giving at the Chicago.pm/WindyCity.pm talk Feb 28th about L<Mojolicious>.
 
 See more at the meetup link L<http://www.meetup.com/Windy-City-Perl-mongers-Meetup/events/104660612/>
+
+Mojolicious Artwork is subject to the terms specified at L<https://github.com/kraih/mojo>.
