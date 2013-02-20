@@ -76,8 +76,8 @@ body {
 <html>
   <head>
     <title><%= title %></title>
-    %= stylesheet 'style.css'
     %= stylesheet 'ppi.css'
+    %= stylesheet 'style.css'
     %= javascript 'ppi.js'
     %= javascript 'mousetrap.min.js'
     %= javascript begin
@@ -90,6 +90,7 @@ body {
     % end
   </head>
   <body>
+    <h2><%= title %></h2>
     %= content
     <div class="nav">
       <button class="left">
@@ -104,6 +105,8 @@ body {
 </html>
 
 @@ 1.html.ep
+
+% title 'Columns Testing';
 
 %= columns begin
 
