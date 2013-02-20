@@ -5,41 +5,8 @@ use Mojolicious::Lite;
 plugin 'PPI';
 
 app->defaults( layout => 'basic' );
-
-helper column => sub { 
-  my $self = shift;
-  my $content = pop || return;
-  $content = ref $content ? $content->() : $content;
-
-  my %args = @_;
-  my $style = $args{width} ? "width: $args{width}%;" : undef; 
-  return $self->render( 
-    partial => 1, 
-    'columns.style' => $style,
-    'columns.column' => $content, 
-    inline => <<'TEMPLATE' );
-% my @tag = qw/div class column/;
-% if ( my $style = stash 'columns.style' ) { push @tag, style => $style } 
-%= tag @tag, begin
-  %= stash 'columns.column'
-% end
-TEMPLATE
-};
-
-helper columns => sub { 
-  my $self = shift;
-  return unless @_;
-  my $content = shift->();
-  return $self->render( 
-    partial => 1, 
-    'columns.content' => $content,
-    inline => <<'TEMPLATE',
-<div class="columns-wrapper"><div class="columns">
-  %= stash 'columns.content'
-</div></div>
-TEMPLATE
-  );
-};
+my $columns = plugin 'ColumnPlugin';
+$columns->width('50');
 
 helper prev_page => sub {
   my $self = shift;
@@ -67,6 +34,11 @@ app->start;
 __DATA__
 
 @@ style.css
+
+body {
+  margin: 20px;
+}
+
 .columns-wrapper {
   display: table;
   width: 100%;
