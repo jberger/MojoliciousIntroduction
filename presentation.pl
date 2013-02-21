@@ -27,7 +27,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 4 );
+app->defaults( 'pages' => 5 );
 
 app->start;
 
@@ -128,21 +128,41 @@ app->start;
 
 @@ 4.html.ep
 
-% title q{Mojolicious::Lite 'Hello World'};
+% title q{Mojolicious::Lite 'Hello User'};
 
 %= columns begin
 
   %= column begin
     <ul>
-      %= tag li => 'imports strict, warnings and utf8'
-      %= tag li => q{handles the '/' route}
-      %= tag li => 'renders the text (as text)'
-      %= tag li => 'starts the app'
+      %= tag li => q{handles all toplevel routes, including '/'}
+      %= tag li => 'stashes route matches'
+      %= tag li => 'other stash values can be added'
+      %= tag li => 'renders from a template with layout'
+      %= tag li => 'stash values localized to Perl scalars'
     </ul>
   % end
 
   %= column begin
     %= ppi 'ex/hello.pl'
+  % end
+
+% end
+
+@@ 5.html.ep
+
+% title q{Testing 'Hello User'};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => q{'Lite' apps must require the app}
+      %= tag li => q{'Full' apps pass class name to Test::Mojo->new}
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/hello1.t'
   % end
 
 % end
