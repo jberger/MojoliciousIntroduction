@@ -27,7 +27,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 2 );
+app->defaults( 'pages' => 3 );
 
 app->start;
 
@@ -78,6 +78,26 @@ __DATA__
 % end
 
 @@ 2.html.ep
+
+% title 'Getting Help';
+
+%= columns begin
+
+  %= column begin
+    %= image 'failraptor.png' => style => 'width: 100%; height: auto;'
+  % end
+
+  %= column begin
+    <ul>
+      %= tag li => 'http://mojolicio.us'
+      %= tag li => 'http://mojocasts.com/e1'
+      %= tag li => '#mojo on irc.perl.org'
+    </ul>
+  % end
+
+% end
+
+@@ 3.html.ep
 
 % title q{Mojolicious::Lite 'Hello World'};
 
