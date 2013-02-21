@@ -7,6 +7,13 @@ body {
   padding-bottom: 15px;
 }
 
+span.ppi-code {
+  min-width: 0;
+  margin: 2px;
+  padding: 6px;
+  border-radius: 5px;
+}
+
 .center {
   text-align: center;
 }
@@ -23,6 +30,7 @@ body {
 .columns > .column {
   display: table-cell;
   vertical-align: middle;
+  padding: 5px;
 }
 
 .nav {

@@ -27,7 +27,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 5 );
+app->defaults( 'pages' => 7 );
 
 app->start;
 
@@ -107,7 +107,7 @@ __DATA__
 
   %= column begin
     <ul>
-      %= tag li => 'imports strict, warnings and utf8'
+      %= tag li => 'imports strict, warnings, utf8 and v5.10'
       %= tag li => q{handles the '/' route}
       %= tag li => 'renders the text (as text)'
       %= tag li => 'starts the app'
@@ -163,6 +163,51 @@ app->start;
 
   %= column begin
     %= ppi 'ex/hello1.t'
+  % end
+
+% end
+
+@@ 6.html.ep
+
+% title q{Aside: Mojo::DOM};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'HTML/XML parser'
+      %= tag li => 'CSS3 selectors (all of them)'
+      %= tag li => 'List of supported selectors in Mojo::DOM::CSS'
+      %= tag li => begin
+        First: <%= ppi '$dom->at($selector)' %> returns a Mojo::DOM
+      % end
+      %= tag li => begin
+        Multiple: <%= ppi '$dom->find($selector)' %> returns a Mojo::Collection
+      % end
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/dom_example.pl'
+  % end
+
+% end
+
+@@ 7.html.ep
+
+% title q{Testing 'Hello User' with Selectors};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Many Test::Mojo methods support selectors'
+      %= tag li => 'Test::Mojo has all the power of DOM/JSON/UA'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/hello2.t'
   % end
 
 % end
