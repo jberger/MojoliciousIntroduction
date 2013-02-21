@@ -158,7 +158,12 @@ app->start;
     <ul>
       %= tag li => q{'Lite' apps must require the app}
       %= tag li => q{'Full' apps pass class name to Test::Mojo->new}
+      %= tag li => 'Request content'
+      %= tag li => 'Test status'
+      %= tag li => 'Test response and content'
     </ul>
+
+    <p> ... but do I really just have to regex the result??? </p>
   % end
 
   %= column begin
