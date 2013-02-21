@@ -245,7 +245,7 @@ app->start;
 
 @@ 8.html.ep
 
-% title q{Aside: 'Mojo::UserAgent'};
+% title q{Aside: Mojo::UserAgent};
 
 %= columns begin
 
