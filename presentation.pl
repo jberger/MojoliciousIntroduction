@@ -138,10 +138,16 @@ app->start;
 %= tag div => style => 'margin: 0px auto; width: 50%;' => begin
   Start the server
   <ul>
-    %= tag li => './script daemon -- basic server'
-    %= tag li => 'morbo script -- development server, automatic reload'
-    %= tag li => 'hypnotoad script -- high performance preforking server'
-    %= tag li => 'plack/psgi (no real-time feature)'
+    %= tag li => begin
+      basic server <pre>./script daemon</pre>
+    % end
+    %= tag li => begin
+      development server, automatic reload <pre>morbo script</pre>
+    % end
+    %= tag li => begin
+      high performance preforking server <pre>hypnotoad script</pre>
+    % end
+    %= tag li => 'plack/psgi (no real-time features)'
     %= tag li => 'CGI (but why?)'
   </ul>
 % end
