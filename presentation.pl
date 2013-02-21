@@ -40,6 +40,17 @@ app->start;
 
 __DATA__
 
+@@ index.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0;url=/1.html" />
+  </head>
+  <body>
+    <a href="/1.html">Go to the talk</a>
+  </body>
+</html>
+
 @@ layouts/basic.html.ep
 
 <!DOCTYPE html>
