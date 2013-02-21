@@ -8,16 +8,23 @@ app->defaults( layout => 'basic' );
 my $columns = plugin 'ColumnPlugin';
 $columns->width('50');
 
+# to get better urls from wallflower
+sub format_hack {
+  state $is_psgi = app->commands->detect eq 'psgi';
+  push @_, format => 'html' if $is_psgi;
+  return @_;
+}
+
 helper prev_page => sub {
   my $self = shift;
   my $page = $self->stash('page');
-  return $page == 1 ? 1 : $page - 1;
+  format_hack $page == 1 ? 1 : $page - 1;
 };
 
 helper next_page => sub {
   my $self = shift;
   my $page = $self->stash('page');
-  return $page == $self->stash('pages') ? $page : $page + 1;
+  format_hack $page == $self->stash('pages') ? $page : $page + 1;
 };
 
 any '/:page' => { page => 1 } => sub {
