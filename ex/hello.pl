@@ -18,7 +18,7 @@ __DATA__
     <title><%= title %></title>
   </head>
   <body>
-    %= contents
+    %= content
   </body>
 <html>
 

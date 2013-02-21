@@ -34,7 +34,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 7 );
+app->defaults( 'pages' => 9 );
 
 app->start;
 
@@ -133,6 +133,19 @@ app->start;
 
 % end
 
+<hr>
+
+%= tag div => style => 'margin: 0px auto; width: 50%;' => begin
+  Start the server
+  <ul>
+    %= tag li => './script daemon -- basic server'
+    %= tag li => 'morbo script -- development server, automatic reload'
+    %= tag li => 'hypnotoad script -- high performance preforking server'
+    %= tag li => 'plack/psgi (no real-time feature)'
+    %= tag li => 'CGI (but why?)'
+  </ul>
+% end
+
 @@ 4.html.ep
 
 % title q{Mojolicious::Lite 'Hello User'};
@@ -220,6 +233,49 @@ app->start;
 
   %= column begin
     %= ppi 'ex/hello2.t'
+  % end
+
+% end
+
+@@ 8.html.ep
+
+% title q{Aside: 'Mojo::UserAgent'};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Full featured user agent'
+      %= tag li => 'Built-in cookie jar'
+      %= tag li => 'Handles redirects'
+      %= tag li => 'SSL and proxy support'
+      %= tag li => 'dom and json response methods'
+      %= tag li => 'non-blocking with callback'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/ua_example.pl'
+  % end
+
+% end
+
+@@ 9.html.ep
+
+% title q{Non-blocking UserAgent + Server};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Requests module documentation from metacpan'
+      %= tag li => 'Waits to render the response'
+      %= tag li => q{Doesn't block the server while waiting}
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/nb_doc_server.pl'
   % end
 
 % end
