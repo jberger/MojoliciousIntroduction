@@ -27,7 +27,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 3 );
+app->defaults( 'pages' => 4 );
 
 app->start;
 
@@ -54,15 +54,17 @@ __DATA__
   </head>
   <body>
     <h1 class="center"><%= title %></h1>
-    %= content
+    <div id="main">
+      %= content
+    </div>
     <div class="nav">
-      <button class="left">
+      <span class="left">
         %= link_to Previous => page => { page => prev_page }
-      </button>
+      </span>
       <span><%= "Page $page / $pages" %></span>
-      <button class="right">
+      <span class="right">
         %= link_to Next => page => { page => next_page }
-      </button>
+      </span>
     </div>
   </body>
 </html>
@@ -124,3 +126,23 @@ app->start;
 
 % end
 
+@@ 4.html.ep
+
+% title q{Mojolicious::Lite 'Hello World'};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'imports strict, warnings and utf8'
+      %= tag li => q{handles the '/' route}
+      %= tag li => 'renders the text (as text)'
+      %= tag li => 'starts the app'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/hello.pl'
+  % end
+
+% end

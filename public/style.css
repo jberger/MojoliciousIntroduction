@@ -3,6 +3,10 @@ body {
   background-color: lightBlue;
 }
 
+#main {
+  padding-bottom: 15px;
+}
+
 .center {
   text-align: center;
 }
@@ -25,7 +29,7 @@ body {
   text-align: center;
   position: fixed; 
   width: 100%; 
-  bottom: 10px;
+  bottom: 15px;
 }
 
 .nav .left {
@@ -36,4 +40,16 @@ body {
 .nav .right {
   position: fixed;
   right: 20px;
+}
+
+.nav span, .nav button {
+  padding: 5px;
+  background-color: #F8F8F8;
+  border-radius: 4px;
+  border: 1pt solid darkGray;
+}
+
+.nav a {
+  color: black;
+  text-decoration: none;
 }
