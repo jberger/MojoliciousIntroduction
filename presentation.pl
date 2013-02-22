@@ -10,6 +10,7 @@ $columns->width('50');
 
 # to get better urls from wallflower
 sub format_hack {
+  no warnings 'uninitialized';
   state $is_psgi = app->commands->detect eq 'psgi';
   push @_, format => 'html' if $is_psgi;
   return @_;

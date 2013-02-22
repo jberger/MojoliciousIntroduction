@@ -24,6 +24,7 @@ __DATA__
 
 @@ hello.html.ep
 
+% layout 'basic';
 % title "Hello $name";
 
 <p>Hello <%= $name %></p>
