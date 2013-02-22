@@ -99,9 +99,17 @@ __DATA__
 
   %= column begin
     <ul>
-      %= tag li => 'http://mojolicio.us'
-      %= tag li => 'http://mojocasts.com/e1'
-      %= tag li => '#mojo on irc.perl.org'
+      %= tag li => begin 
+        <%= link_to 'http://mojolicio.us' => begin %>http://mojolicio.us<% end %>
+      % end
+      %= tag li => begin
+        <%= link_to 'http://mojocasts.com/e1' => begin %>http://mojocasts.com/e1<% end %>
+      % end
+      %= tag li => begin
+        %= link_to 'http://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org' => begin
+          #mojo on irc.perl.org
+        % end
+      % end
     </ul>
   % end
 
