@@ -82,9 +82,9 @@ __DATA__
 % title q{Introduction to Mojolicious};
 
 %= tag div => class => center => begin
-  <p>
+  <p><a href="http://mojolicio.us">
     %= image 'unicorn.png'
-  </p>
+  </a></p>
 % end
 
 @@ 2.html.ep
