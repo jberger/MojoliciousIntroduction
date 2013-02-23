@@ -7,13 +7,19 @@ plugin 'PPI';
 my $columns = plugin 'ColumnPlugin';
 $columns->width('50');
 
-# to get better urls from wallflower
-sub format_hack {
+# to get better urls from wallflower for gh-pages
+my $is_psgi = do {
   no warnings 'uninitialized';
-  state $is_psgi = app->commands->detect eq 'psgi';
+  app->commands->detect eq 'psgi';
+};
+
+under '/WCpm-Mojolicious' if $is_psgi;
+
+sub format_hack {
   push @_, format => 'html' if $is_psgi;
   return @_;
 }
+#####
 
 helper prev_page => sub {
   my $self = shift;
