@@ -1,10 +1,11 @@
+% my $url = url_for page => { format => 'html' };
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0;url=/1.html" />
+    <meta http-equiv="refresh" content="0;url=<%= $url %>" />
   </head>
   <body>
-    <a href="<%= url_for page => { format => 'html' } %>">Go to the talk</a>
+    <a href="<%= $url %>">Go to the talk</a>
   </body>
 </html>
 
