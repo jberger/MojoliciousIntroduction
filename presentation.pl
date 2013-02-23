@@ -4,7 +4,6 @@ use Mojolicious::Lite;
 
 plugin 'PPI';
 
-app->defaults( layout => 'basic' );
 my $columns = plugin 'ColumnPlugin';
 $columns->width('50');
 
@@ -31,6 +30,7 @@ helper next_page => sub {
 any '/:page' => { page => 1 } => sub {
   my $self = shift;
   my $page = $self->stash( 'page' );
+  $self->layout( 'slide' ) if $page =~ /^\d/;
   $self->render( $page );
 };
 
@@ -40,42 +40,6 @@ app->defaults( 'pages' => 9 );
 app->start;
 
 __DATA__
-
-@@ layouts/basic.html.ep
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    %= stylesheet 'ppi.css'
-    %= stylesheet 'style.css'
-    %= javascript 'ppi.js'
-    %= javascript 'mousetrap.min.js'
-    %= javascript begin
-      Mousetrap.bind(['right', 'down', 'pagedown'], function(){
-        window.location = "<%= url_for 'page' => { page => next_page } %>";
-      });
-      Mousetrap.bind(['left', 'up', 'pageup'], function(){
-        window.location = "<%= url_for 'page' => { page => prev_page } %>";
-      });
-    % end
-  </head>
-  <body>
-    <h1 class="center"><%= title %></h1>
-    <div id="main">
-      %= content
-    </div>
-    <div class="nav">
-      <span class="left">
-        %= link_to Previous => page => { page => prev_page }
-      </span>
-      <span><%= "Page $page / $pages" %></span>
-      <span class="right">
-        %= link_to Next => page => { page => next_page }
-      </span>
-    </div>
-  </body>
-</html>
 
 @@ 1.html.ep
 
