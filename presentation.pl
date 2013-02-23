@@ -7,36 +7,22 @@ plugin 'PPI';
 my $columns = plugin 'ColumnPlugin';
 $columns->width('50');
 
-# to get better urls from wallflower for gh-pages
-my $is_psgi = do {
-  no warnings 'uninitialized';
-  app->commands->detect eq 'psgi';
-};
-
-under '/WCpm-Mojolicious' if $is_psgi;
-
-sub format_hack {
-  push @_, format => 'html' if $is_psgi;
-  return @_;
-}
-#####
-
 helper prev_page => sub {
   my $self = shift;
   my $page = $self->stash('page');
-  format_hack $page == 1 ? 1 : $page - 1;
+  return $page == 1 ? 1 : $page - 1;
 };
 
 helper next_page => sub {
   my $self = shift;
   my $page = $self->stash('page');
-  format_hack $page == $self->stash('pages') ? $page : $page + 1;
+  return $page == $self->stash('pages') ? $page : $page + 1;
 };
 
 any '/:page' => { page => 1 } => sub {
   my $self = shift;
   my $page = $self->stash( 'page' );
-  $self->layout( 'slide' ) if $page =~ /^\d/;
+  $self->layout( 'slide' );
   $self->render( $page );
 };
 
