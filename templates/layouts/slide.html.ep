@@ -2,10 +2,10 @@
 <html>
   <head>
     <title><%= title %></title>
-    %= stylesheet 'ppi.css'
-    %= stylesheet 'style.css'
-    %= javascript 'ppi.js'
-    %= javascript 'mousetrap.min.js'
+    %= stylesheet '/ppi.css'
+    %= stylesheet '/style.css'
+    %= javascript '/ppi.js'
+    %= javascript '/mousetrap.min.js'
     %= javascript begin
       Mousetrap.bind(['right', 'down', 'pagedown'], function(){
         window.location = "<%= url_for 'page' => { page => next_page } %>";
