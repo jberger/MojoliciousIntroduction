@@ -5,12 +5,17 @@ any '/' => 'index';
 
 websocket '/data' => sub {
   my $self = shift;
+  my $timer;
   $self->on( text => sub {
     my ($self, $text) = @_;
-    Mojo::IOLoop->recurring( 1 => sub {
+    $timer = Mojo::IOLoop->recurring( 1 => sub {
       state $i = 0;
       $self->send({ text => j(get_data($i++)) }); 
     });
+  });
+
+  $self->on( finish => sub {
+    Mojo::IOLoop->remove($timer);
   });
 };
 
