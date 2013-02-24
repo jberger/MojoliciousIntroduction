@@ -19,6 +19,10 @@ helper next_page => sub {
   return $page == $self->stash('pages') ? $page : $page + 1;
 };
 
+helper code => sub {
+  shift->tag('pre' => class => 'other-code' => @_);
+};
+
 any '/index' => 'index';
 
 any '/:page' => { page => 1 } => sub {
@@ -29,7 +33,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 11 );
+app->defaults( 'pages' => 12 );
 
 app->start;
 
@@ -106,13 +110,16 @@ app->start;
   Start the server
   <ul>
     %= tag li => begin
-      basic server <pre>./script daemon</pre>
+      basic server 
+      %= code q{./script daemon}
     % end
     %= tag li => begin
-      development server, automatic reload <pre>morbo script</pre>
+      development server, automatic reload
+      %= code q{morbo script}
     % end
     %= tag li => begin
-      high performance preforking server <pre>hypnotoad script</pre>
+      high performance preforking server
+      %= code q{hypnotoad script}
     % end
     %= tag li => 'plack/psgi (no real-time features)'
     %= tag li => 'CGI (but why?)'
@@ -296,3 +303,26 @@ app->start;
   % end
 
 % end
+
+@@ 12.html.ep
+
+% title q{Mojolicious::Commands};
+
+<ul>
+  %= tag li => begin
+    UserAgent get something from the web
+    %= code q{mojo get www.reddit.com/r/perl/ 'p.title > a.title' text}
+  % end
+  %= tag li => begin
+    UserAgent get from your app!
+    %= code q{./ex/hello.pl get / p 1 text}
+  % end
+  %= tag li => begin
+    Examine the routes that your app defines
+    %= code q{./ex/websocket.pl routes}
+  % end
+  %= tag li => begin
+    Run some code against your app!
+    %= code q{perl ex/websocket.pl eval 'say app->dumper(app->home)'}
+  % end
+</ul>

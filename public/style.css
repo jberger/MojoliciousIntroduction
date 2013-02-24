@@ -7,11 +7,15 @@ body {
   padding-bottom: 15px;
 }
 
-span.ppi-code {
+span.ppi-code, pre.other-code {
   min-width: 0;
   margin: 2px;
   padding: 6px;
   border-radius: 5px;
+}
+
+pre.other-code {
+  background-color: #F8F8F8;
 }
 
 .center {
