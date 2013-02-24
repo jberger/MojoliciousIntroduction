@@ -29,7 +29,7 @@ span.ppi-code {
 
 .columns > .column {
   display: table-cell;
-  vertical-align: middle;
+  vertical-align: top; /*middle*/
   padding: 5px;
 }
 
