@@ -19,6 +19,8 @@ helper next_page => sub {
   return $page == $self->stash('pages') ? $page : $page + 1;
 };
 
+any '/index' => 'index';
+
 any '/:page' => { page => 1 } => sub {
   my $self = shift;
   my $page = $self->stash( 'page' );
