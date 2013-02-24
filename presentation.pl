@@ -29,7 +29,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 9 );
+app->defaults( 'pages' => 10 );
 
 app->start;
 
@@ -249,6 +249,27 @@ app->start;
 
   %= column begin
     %= ppi 'ex/nb_doc_server.pl'
+  % end
+
+% end
+
+@@ 10.html.ep
+
+% title q{WebSockets};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Client opens websocket'
+      %= tag li => 'Server responds with data every second'
+      %= tag li => 'Client receives data and updates plot'
+      %= tag li => 'Real app would get some more interesting data'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/websocket.pl'
   % end
 
 % end
