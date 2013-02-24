@@ -29,7 +29,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 10 );
+app->defaults( 'pages' => 11 );
 
 app->start;
 
@@ -270,6 +270,29 @@ app->start;
 
   %= column begin
     %= ppi 'ex/websocket.pl'
+  % end
+
+% end
+
+@@ 11.html.ep
+
+% title q{Testing WebSockets};
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Testing is just as easy!'
+      %= tag li => 'Send a message'
+      %= tag li => 'Wait for a response'
+      %= tag li => 'Test response using JSON pointer'
+      %= tag li => 'Repeat or finish'
+      %= tag li => 'Many other websocket test methods'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/websocket.t'
   % end
 
 % end
