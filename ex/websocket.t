@@ -16,6 +16,7 @@ $t->websocket_ok('/data')
   ->send_ok('anything')
   ->message_ok
   ->json_message_is( '/0' => 0 )
+  ->json_message_has( '/1' )
   ->message_ok
   ->json_message_is( '/0' => 1 )
   ->finish_ok;
