@@ -33,7 +33,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 12 );
+app->defaults( 'pages' => 14 );
 
 app->start;
 
@@ -121,7 +121,11 @@ app->start;
       high performance preforking server
       %= code q{hypnotoad script}
     % end
-    %= tag li => 'plack/psgi (no real-time features)'
+    %= tag li => begin
+      plack/psgi (no real-time features)
+      %= code q{plackup script}
+      %= code q{starman script}
+    % end
     %= tag li => 'CGI (but why?)'
   </ul>
 % end
@@ -230,7 +234,8 @@ app->start;
       %= tag li => 'Handles redirects'
       %= tag li => 'SSL and proxy support'
       %= tag li => 'dom and json response methods'
-      %= tag li => 'non-blocking with callback'
+      %= tag li => 'Pluggable content generators'
+      %= tag li => 'Non-blocking with callback'
     </ul>
   % end
 
@@ -241,6 +246,42 @@ app->start;
 % end
 
 @@ 9.html.ep
+
+% title 'Helpers and Sessions (Login Example)';
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'content here'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/login.pl'
+  % end
+
+% end
+
+@@ 10.html.ep
+
+% title 'Testing Login Example';
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'content here'
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/login.t'
+  % end
+
+% end
+
+@@ 11.html.ep
 
 % title q{Non-blocking UserAgent + Server};
 
@@ -260,7 +301,7 @@ app->start;
 
 % end
 
-@@ 10.html.ep
+@@ 12.html.ep
 
 % title q{WebSockets};
 
@@ -281,7 +322,7 @@ app->start;
 
 % end
 
-@@ 11.html.ep
+@@ 13.html.ep
 
 % title q{Testing WebSockets};
 
@@ -304,7 +345,7 @@ app->start;
 
 % end
 
-@@ 12.html.ep
+@@ 14.html.ep
 
 % title q{Mojolicious::Commands};
 
@@ -324,5 +365,15 @@ app->start;
   %= tag li => begin
     Run some code against your app!
     %= code q{perl ex/websocket.pl eval 'say app->dumper(app->home)'}
+  % end
+  %= tag li => begin
+    Generate a new app or plugin
+    %= code q{mojo generate lite_app}
+    %= code q{mojo generate app}
+    %= code q{mojo generate plugin}
+  % end
+  %= tag li => begin
+    Add your own commands to your app. e.g.:
+    %= code q{galileo setup}
   % end
 </ul>
