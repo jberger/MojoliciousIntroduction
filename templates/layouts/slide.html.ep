@@ -16,18 +16,20 @@
     % end
   </head>
   <body>
-    <h1 class="center"><%= title %></h1>
-    <div id="main">
-      %= content
-    </div>
-    <div class="nav">
-      <span class="left">
-        %= link_to Previous => page => { page => prev_page }
-      </span>
-      <span><%= "Page $page / $pages" %></span>
-      <span class="right">
-        %= link_to Next => page => { page => next_page }
-      </span>
+    <div class="container">
+      <h1 class="center"><%= title %></h1>
+      <div id="main">
+        %= content
+      </div>
+      <div class="nav">
+        <span class="left">
+          %= link_to Previous => page => { page => prev_page }
+        </span>
+        <span><%= "Page $page / $pages" %></span>
+        <span class="right">
+          %= link_to Next => page => { page => next_page }
+        </span>
+      </div>
     </div>
   </body>
 </html>
