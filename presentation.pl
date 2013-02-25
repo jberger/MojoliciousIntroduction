@@ -364,7 +364,7 @@ app->start;
   % end
   %= tag li => begin
     Run some code against your app!
-    %= code q{perl ex/websocket.pl eval 'say app->dumper(app->home)'}
+    %= code q{.ex/websocket.pl eval 'say app->dumper(app->home)'}
   % end
   %= tag li => begin
     Generate a new app or plugin
