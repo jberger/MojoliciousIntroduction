@@ -22,13 +22,15 @@
         %= content
       </div>
       <div class="nav">
-        <span class="left">
+        <div class="nav-item">
           %= link_to Previous => page => { page => prev_page }
-        </span>
-        <span><%= "Page $page / $pages" %></span>
-        <span class="right">
+        </div>
+        <div class="nav-item">
+          %= "Page $page / $pages"
+        </div>
+        <div class="nav-item">
           %= link_to Next => page => { page => next_page }
-        </span>
+        </div>
       </div>
     </div>
   </body>
