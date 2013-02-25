@@ -253,7 +253,11 @@ app->start;
 
   %= column begin
     <ul>
-      %= tag li => 'content here'
+      %= tag li => q{'helpers' are methods on the app, controller and template}
+      %= tag li => 'Many helpers are available by default'
+      %= tag li => q{'DefaultHelpers' and 'TagHelpers'}
+      %= tag li => q{Helpers (and other things) can be bundled and distributed as 'plugins'}
+      %= tag li => q{Session info is signed and stored in a cookie}
     </ul>
   % end
 
@@ -271,7 +275,9 @@ app->start;
 
   %= column begin
     <ul>
-      %= tag li => 'content here'
+      %= tag li => 'Test that the form is only shown when not authenticated'
+      %= tag li => 'UserAgent generates form content from hash'
+      %= tag li => 'UserAgent follows logout redirect'
     </ul>
   % end
 
