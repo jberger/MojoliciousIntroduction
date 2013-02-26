@@ -16,9 +16,11 @@ sub register {
     $content = ref $content ? $content->() : $content;
 
     my %args = @_;
-    $args{width} //= $plugin->width;
+    $args{width} //= $plugin->width;        #/# highlight fix
 
-    my $style = $args{width} ? "width: $args{width}%;" : undef; 
+    my $style = $args{width} ? "width: $args{width}%;" : undef;
+    $style .= "vertical-align: $args{align};" if $args{align};
+ 
     return $c->render( 
       partial => 1, 
       'columns.style' => $style,

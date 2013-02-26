@@ -33,7 +33,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 14 );
+app->defaults( 'pages' => 15 );
 
 app->start;
 
@@ -50,6 +50,39 @@ __DATA__
 % end
 
 @@ 2.html.ep
+
+% title q{What is Mojolicious?};
+
+%= columns begin 
+
+  %= column align => middle => begin
+    %= image 'noraptor.png'
+  % end
+
+  %= column begin
+    <ul>
+      %= tag li => 'A web framework for Perl'
+      %= tag li => q{'Duct tape for the HTML5 web'}
+      %= tag li => 'Designed from the ground up'
+      %= tag li => '... based on years of experience developing Catalyst'
+      %= tag li => 'Portable' 
+      %= tag li => 'No non-core dependencies'
+      %= tag li => 'Batteries included'
+      %= tag li => 'Real-time and non-blocking'
+      %= tag li => 'Web scale'
+      %= tag li => '9215 lines of code in lib'
+      %= tag li => '10052 tests'
+      %= tag li => begin
+        Easy to install (takes only one minute!)
+        %= code q{curl get.mojolicio.us | sh}
+      % end
+    </ul>
+  % end
+
+% end
+
+
+@@ 3.html.ep
 
 % title 'Getting Help';
 
@@ -77,7 +110,7 @@ __DATA__
 
 % end
 
-@@ 3.html.ep
+@@ 4.html.ep
 
 % title q{Mojolicious::Lite 'Hello World'};
 
@@ -130,7 +163,7 @@ app->start;
   </ul>
 % end
 
-@@ 4.html.ep
+@@ 5.html.ep
 
 % title q{Mojolicious::Lite 'Hello User'};
 
@@ -152,7 +185,7 @@ app->start;
 
 % end
 
-@@ 5.html.ep
+@@ 6.html.ep
 
 % title q{Testing 'Hello User'};
 
@@ -176,7 +209,7 @@ app->start;
 
 % end
 
-@@ 6.html.ep
+@@ 7.html.ep
 
 % title q{Aside: Mojo::DOM};
 
@@ -202,7 +235,7 @@ app->start;
 
 % end
 
-@@ 7.html.ep
+@@ 8.html.ep
 
 % title q{Testing 'Hello User' with Selectors};
 
@@ -221,7 +254,7 @@ app->start;
 
 % end
 
-@@ 8.html.ep
+@@ 9.html.ep
 
 % title q{Aside: Mojo::UserAgent};
 
@@ -245,7 +278,7 @@ app->start;
 
 % end
 
-@@ 9.html.ep
+@@ 10.html.ep
 
 % title 'Helpers and Sessions (Login Example)';
 
@@ -267,7 +300,7 @@ app->start;
 
 % end
 
-@@ 10.html.ep
+@@ 11.html.ep
 
 % title 'Testing Login Example';
 
@@ -287,7 +320,7 @@ app->start;
 
 % end
 
-@@ 11.html.ep
+@@ 12.html.ep
 
 % title q{Non-blocking UserAgent + Server};
 
@@ -307,7 +340,7 @@ app->start;
 
 % end
 
-@@ 12.html.ep
+@@ 13.html.ep
 
 % title q{WebSockets};
 
@@ -328,7 +361,7 @@ app->start;
 
 % end
 
-@@ 13.html.ep
+@@ 14.html.ep
 
 % title q{Testing WebSockets};
 
@@ -351,7 +384,7 @@ app->start;
 
 % end
 
-@@ 14.html.ep
+@@ 15.html.ep
 
 % title q{Mojolicious::Commands};
 
