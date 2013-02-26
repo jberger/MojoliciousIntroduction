@@ -9,9 +9,9 @@ say $ua->get('api.metacpan.org/v0/release/Mojolicious')
 
 
 use Mojo::URL;
-my $url = Mojo::URL->new('http://openlibrary.org/search.json')
-                   ->query( title => 'perl practices' );
-
-say $ua->get($url)
-       ->res->json('/docs/0/title_suggest');
+my $url = Mojo::URL->new('http://openlibrary.org/subjects/')
+                   ->path('perl.json')
+                   ->query( details => 'true' );
+say $url;
+say $ua->get($url)->res->json('/works/0/title');
 
