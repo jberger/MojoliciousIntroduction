@@ -92,7 +92,7 @@ __DATA__
     %= image 'failraptor.png' => style => 'width: 100%; height: auto;'
   % end
 
-  %= column begin
+  %= column align => middle => begin
     <ul>
       %= tag li => begin 
         <%= link_to 'http://mojolicio.us' => begin %>http://mojolicio.us<% end %>
