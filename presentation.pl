@@ -193,8 +193,11 @@ app->start;
 
   %= column begin
     <ul>
-      %= tag li => q{'Lite' apps must require the app}
-      %= tag li => q{'Full' apps pass class name to Test::Mojo->new}
+      %= tag li => 'Load the app'
+      <ul>
+        %= tag li => q{'Lite' apps must require the app}
+        %= tag li => q{'Full' apps pass class name to Test::Mojo->new}
+      </ul>
       %= tag li => 'Request content'
       %= tag li => 'Test status'
       %= tag li => 'Test response and content'
@@ -244,7 +247,13 @@ app->start;
   %= column begin
     <ul>
       %= tag li => 'Many Test::Mojo methods support selectors'
-      %= tag li => 'Test::Mojo has all the power of DOM/JSON/UA'
+      %= tag li => 'Test::Mojo has all the power of'
+      %= tag ul => begin
+        %= tag li => 'Mojo::DOM'
+        %= tag li => 'Mojo::JSON'
+        %= tag li => 'Mojo::UserAgent'
+      % end
+      %= tag li => 'Wraps many useful functions of Test::More'
     </ul>
   % end
 
@@ -255,6 +264,28 @@ app->start;
 % end
 
 @@ 9.html.ep
+
+% title 'Helpers and Sessions (Login Example)';
+
+%= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => q{'helpers' are methods on the app, controller and template}
+      %= tag li => 'Many helpers are available by default'
+      %= tag li => q{'DefaultHelpers' and 'TagHelpers'}
+      %= tag li => q{Helpers (and other things) can be bundled and distributed as 'plugins'}
+      %= tag li => q{Session info is signed and stored in a cookie}
+    </ul>
+  % end
+
+  %= column begin
+    %= ppi 'ex/login.pl'
+  % end
+
+% end
+
+@@ 10.html.ep
 
 % title q{Aside: Mojo::UserAgent};
 
@@ -274,28 +305,6 @@ app->start;
 
   %= column begin
     %= ppi 'ex/ua_example.pl'
-  % end
-
-% end
-
-@@ 10.html.ep
-
-% title 'Helpers and Sessions (Login Example)';
-
-%= columns begin
-
-  %= column begin
-    <ul>
-      %= tag li => q{'helpers' are methods on the app, controller and template}
-      %= tag li => 'Many helpers are available by default'
-      %= tag li => q{'DefaultHelpers' and 'TagHelpers'}
-      %= tag li => q{Helpers (and other things) can be bundled and distributed as 'plugins'}
-      %= tag li => q{Session info is signed and stored in a cookie}
-    </ul>
-  % end
-
-  %= column begin
-    %= ppi 'ex/login.pl'
   % end
 
 % end
