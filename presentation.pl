@@ -401,6 +401,7 @@ app->start;
   %= tag li => begin
     UserAgent get something from the web
     %= code q{mojo get www.reddit.com/r/perl/ 'p.title > a.title' text}
+    %= code q{mojo get http://search.twitter.com/search.json?q=perl /results/0/text}
   % end
   %= tag li => begin
     UserAgent get from your app!
