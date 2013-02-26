@@ -298,7 +298,7 @@ app->start;
       %= tag li => 'Handles redirects'
       %= tag li => 'SSL and proxy support'
       %= tag li => 'dom and json response methods'
-      %= tag li => 'Pluggable content generators'
+      %= tag li => 'Pluggable content generators (form/json)'
       %= tag li => 'Non-blocking with callback'
     </ul>
   % end
