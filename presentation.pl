@@ -33,7 +33,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 15 );
+app->defaults( 'pages' => 17 );
 
 app->start;
 
@@ -331,6 +331,30 @@ app->start;
 
 @@ 12.html.ep
 
+% title q{Content Negotiation};
+
+%= columns begin
+
+  %= column begin
+    %= ppi 'ex/content.pl'
+  % end
+
+% end
+
+@@ 13.html.ep
+
+% title q{Testing Content Negotiation};
+
+%= columns begin
+
+  %= column begin
+    %= ppi 'ex/content.t'
+  % end
+
+% end
+
+@@ 14.html.ep
+
 % title q{Non-blocking UserAgent + Server};
 
 %= columns begin
@@ -349,7 +373,7 @@ app->start;
 
 % end
 
-@@ 13.html.ep
+@@ 15.html.ep
 
 % title q{WebSockets};
 
@@ -370,7 +394,7 @@ app->start;
 
 % end
 
-@@ 14.html.ep
+@@ 16.html.ep
 
 % title q{Testing WebSockets};
 
@@ -393,7 +417,7 @@ app->start;
 
 % end
 
-@@ 15.html.ep
+@@ 17.html.ep
 
 % title q{Mojolicious::Commands};
 
