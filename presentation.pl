@@ -1,39 +1,14 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
+use lib 'lib';
 
 plugin 'PPI';
 
-my $columns = plugin 'ColumnPlugin';
-$columns->width('50');
-
-helper prev_page => sub {
-  my $self = shift;
-  my $page = $self->stash('page');
-  return $page == 1 ? 1 : $page - 1;
-};
-
-helper next_page => sub {
-  my $self = shift;
-  my $page = $self->stash('page');
-  return $page == $self->stash('pages') ? $page : $page + 1;
-};
-
-helper code => sub {
-  shift->tag('pre' => class => 'other-code' => @_);
-};
+my $slides = plugin 'SimpleSlides';
+$slides->column_width('50')->last_slide(19);
 
 any '/index' => 'index';
-
-any '/:page' => { page => 1 } => sub {
-  my $self = shift;
-  my $page = $self->stash( 'page' );
-  $self->layout( 'slide' );
-  $self->render( $page );
-};
-
-# update with the total number of pages
-app->defaults( 'pages' => 19 );
 
 app->start;
 
