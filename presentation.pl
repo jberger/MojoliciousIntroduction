@@ -154,11 +154,13 @@ app->start;
       %= code q{./script daemon}
     % end
     %= tag li => begin
-      development server, automatic reload
+      development server,<br>
+      smooth auto-restarting on file change
       %= code q{morbo script}
     % end
     %= tag li => begin
-      high performance preforking server
+      high performance preforking server,<br>
+      zero downtime redeployment
       %= code q{hypnotoad script}
     % end
     %= tag li => begin
