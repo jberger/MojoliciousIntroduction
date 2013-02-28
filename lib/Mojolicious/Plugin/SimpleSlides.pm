@@ -36,13 +36,17 @@ sub register {
     shift->tag('pre' => class => 'code-line' => @_);
   });
 
-  my $first = $plugin->first_slide;
-  $app->routes->any( '/:slide' => { slide => $first } => [ slide => qr/\d+/ ] => sub {
-    my $self = shift;
-    my $slide = $self->stash( 'slide' );
-    $self->layout( 'slide' );
-    $self->render( $slide );
-  });
+  $app->routes->any( 
+    '/:slide',
+    { slide => $plugin->first_slide },
+    [ slide => qr/\d+/ ],
+    sub {
+      my $self = shift;
+      my $slide = $self->stash( 'slide' );
+      $self->layout( 'slide' );
+      $self->render( $slide );
+    }
+  );
 
   return $plugin;
 }
