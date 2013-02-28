@@ -11,6 +11,8 @@ has 'column_width';
 
 has [qw/first_slide last_slide/] => 1;
 
+has 'layout' => 'simple_slides';
+
 has 'ppi' => 1;
 
 sub register {
@@ -45,7 +47,7 @@ sub register {
     sub {
       my $self = shift;
       my $slide = $self->stash( 'slide' );
-      $self->layout( 'slide' );
+      $self->layout( $self->simple_slides->layout );
       $self->render( $slide );
     }
   );
@@ -110,7 +112,7 @@ __DATA__
   </div>
 </div>
 
-@@ layouts/slide.html.ep
+@@ layouts/simple_slides.html.ep
 <!DOCTYPE html>
 <html>
   <head>
