@@ -493,6 +493,10 @@ app->start;
 
 <h2>Now go have fun with Mojolicious!</h2>
 
+%= tag div => class => center => begin
+  %= image 'cannot_be_unseen.jpg', width => '250px'
+% end
+
 If you liked that, see also 
 <ul>
   %= tag li => begin

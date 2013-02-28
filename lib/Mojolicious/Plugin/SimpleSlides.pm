@@ -13,8 +13,6 @@ has [qw/first_slide last_slide/] => 1;
 
 has 'layout' => 'simple_slides';
 
-has 'ppi' => sub { !! $INC{'Mojolicious/Plugin/PPI.pm'} };
-
 sub register {
   my ($plugin, $app, $conf) = @_;
 
@@ -122,7 +120,7 @@ __DATA__
 <html>
   <head>
     <title><%= title %></title>
-    % if ( simple_slides->ppi ) {
+    % if ( __PACKAGE__->can('ppi') ) {
       %= stylesheet '/ppi.css';
       %= javascript '/ppi.js';
     % }
