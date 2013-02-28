@@ -6,7 +6,7 @@ use lib 'lib';
 plugin 'PPI';
 
 my $slides = plugin 'SimpleSlides';
-$slides->column_width('50')->last_slide(19);
+$slides->column_width('50')->last_slide(20);
 
 any '/index' => 'index';
 
@@ -484,5 +484,31 @@ app->start;
   %= tag li => begin
     Add your own commands to your app. e.g.:
     %= code_line q{galileo setup}
+  % end
+</ul>
+
+@@ 20.html.ep
+
+% title 'Thanks for listening!';
+
+<h2>Now go have fun with Mojolicious!</h2>
+
+If you liked that, see also 
+<ul>
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mango' => begin %>Mango<%= end %> 
+    - The new MongoDB driver written by author of Mojolicious
+  % end 
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Galileo' => begin %>Galileo<%= end %> 
+    - My CPAN friendly CMS which runs on top of Mojolicious
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::PPI' => begin %>Mojolicious::Plugin::PPI<%= end %> 
+    - Perl syntax highlighting for Mojolicious
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::SimpleSlides' => begin %>Mojolicious::Plugin::SimpleSlides<%= end %> 
+    - The "abuse of Mojo::Template" slide plugin written especially for this talk (coming soon)
   % end
 </ul>
