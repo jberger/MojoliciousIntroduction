@@ -13,7 +13,7 @@ has [qw/first_slide last_slide/] => 1;
 
 has 'layout' => 'simple_slides';
 
-has 'ppi' => 1;
+has 'ppi' => sub { !! $INC{'Mojolicious/Plugin/PPI.pm'} };
 
 sub register {
   my ($plugin, $app, $conf) = @_;
@@ -26,14 +26,15 @@ sub register {
   $app->helper( columns => \&_columns );
 
   $app->helper( prev_slide => sub {
-    my $slide = shift->stash('slide');
-    return $slide == 1 ? 1 : $slide - 1;
+    my $self = shift;
+    my $slide = $self->stash('slide');
+    $slide == $self->simple_slides->first_slide ? $slide : $slide - 1;
   });
 
   $app->helper( next_slide => sub {
     my $self = shift;
     my $slide = $self->stash('slide');
-    return $slide == $self->simple_slides->last_slide ? $slide : $slide + 1;
+    $slide == $self->simple_slides->last_slide ? $slide : $slide + 1;
   });
 
   $app->helper( code_line => sub {
@@ -43,16 +44,20 @@ sub register {
   $app->routes->any( 
     '/:slide',
     { slide => $plugin->first_slide },
-    [ slide => qr/\d+/ ],
-    sub {
-      my $self = shift;
-      my $slide = $self->stash( 'slide' );
-      $self->layout( $self->simple_slides->layout );
-      $self->render( $slide );
-    }
+    [ slide => qr/\b\d+\b/ ],
+    \&_action,
   );
 
   return $plugin;
+}
+
+# controller action callback
+
+sub _action {
+  my $c = shift;
+  my $slide = $c->stash( 'slide' );
+  $c->layout( $c->simple_slides->layout );
+  $c->render( $slide );
 }
 
 # helpers
