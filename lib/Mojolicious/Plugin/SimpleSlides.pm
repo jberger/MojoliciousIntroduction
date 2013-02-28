@@ -11,6 +11,8 @@ has 'column_width';
 
 has [qw/first_slide last_slide/] => 1;
 
+has 'ppi' => 1;
+
 sub register {
   my ($plugin, $app, $conf) = @_;
 
@@ -32,7 +34,7 @@ sub register {
     return $slide == $self->simple_slides->last_slide ? $slide : $slide + 1;
   });
 
-  $app->helper( code => sub {
+  $app->helper( code_line => sub {
     shift->tag('pre' => class => 'code-line' => @_);
   });
 
@@ -113,9 +115,11 @@ __DATA__
 <html>
   <head>
     <title><%= title %></title>
-    %= stylesheet '/ppi.css'
+    % if ( simple_slides->ppi ) {
+      %= stylesheet '/ppi.css';
+      %= javascript '/ppi.js';
+    % }
     %= stylesheet '/style.css'
-    %= javascript '/ppi.js'
     %= javascript '/mousetrap.min.js'
     %= javascript begin
       Mousetrap.bind(['right', 'down', 'pagedown'], function(){

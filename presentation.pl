@@ -49,7 +49,7 @@ __DATA__
       %= tag li => '10052 tests'
       %= tag li => begin
         Easy to install (takes only one minute!)
-        %= code q{curl get.mojolicio.us | sh}
+        %= code_line q{curl get.mojolicio.us | sh}
       % end
     </ul>
   % end
@@ -126,22 +126,22 @@ app->start;
   <ul>
     %= tag li => begin
       basic server 
-      %= code q{./script daemon}
+      %= code_line q{./script daemon}
     % end
     %= tag li => begin
       development server,<br>
       smooth auto-restarting on file change
-      %= code q{morbo script}
+      %= code_line q{morbo script}
     % end
     %= tag li => begin
       high performance preforking server,<br>
       zero downtime redeployment
-      %= code q{hypnotoad script}
+      %= code_line q{hypnotoad script}
     % end
     %= tag li => begin
       plack/psgi (no real-time features)
-      %= code q{plackup script}
-      %= code q{starman script}
+      %= code_line q{plackup script}
+      %= code_line q{starman script}
     % end
     %= tag li => 'CGI (but why?)'
   </ul>
@@ -460,29 +460,29 @@ app->start;
 <ul>
   %= tag li => begin
     UserAgent get something from the web
-    %= code q{mojo get www.reddit.com/r/perl/ 'p.title > a.title' text}
-    %= code q{mojo get http://search.twitter.com/search.json?q=perl /results/0/text}
+    %= code_line q{mojo get www.reddit.com/r/perl/ 'p.title > a.title' text}
+    %= code_line q{mojo get http://search.twitter.com/search.json?q=perl /results/0/text}
   % end
   %= tag li => begin
     UserAgent get from your app!
-    %= code q{./ex/hello.pl get / p 1 text}
+    %= code_line q{./ex/hello.pl get / p 1 text}
   % end
   %= tag li => begin
     Examine the routes that your app defines
-    %= code q{./ex/websocket.pl routes}
+    %= code_line q{./ex/websocket.pl routes}
   % end
   %= tag li => begin
     Run some code against your app!
-    %= code q{.ex/websocket.pl eval 'say app->dumper(app->home)'}
+    %= code_line q{.ex/websocket.pl eval 'say app->dumper(app->home)'}
   % end
   %= tag li => begin
     Generate a new app or plugin
-    %= code q{mojo generate lite_app}
-    %= code q{mojo generate app}
-    %= code q{mojo generate plugin}
+    %= code_line q{mojo generate lite_app}
+    %= code_line q{mojo generate app}
+    %= code_line q{mojo generate plugin}
   % end
   %= tag li => begin
     Add your own commands to your app. e.g.:
-    %= code q{galileo setup}
+    %= code_line q{galileo setup}
   % end
 </ul>
