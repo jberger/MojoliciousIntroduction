@@ -37,7 +37,7 @@ sub register {
   });
 
   my $first = $plugin->first_slide;
-  $app->routes->any( '/:slide' => { slide => $first } => sub {
+  $app->routes->any( '/:slide' => { slide => $first } => [ slide => qr/\d+/ ] => sub {
     my $self = shift;
     my $slide = $self->stash( 'slide' );
     $self->layout( 'slide' );
@@ -115,10 +115,10 @@ __DATA__
     %= javascript '/mousetrap.min.js'
     %= javascript begin
       Mousetrap.bind(['right', 'down', 'pagedown'], function(){
-        window.location = "<%= url_for 'slide' => { slide => next_slide } %>";
+        window.location = "<%= url_for slide => { slide => next_slide } %>";
       });
       Mousetrap.bind(['left', 'up', 'pageup'], function(){
-        window.location = "<%= url_for 'slide' => { slide => prev_slide } %>";
+        window.location = "<%= url_for slide => { slide => prev_slide } %>";
       });
     % end
   </head>

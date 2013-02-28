@@ -1,4 +1,4 @@
-% my $url = url_for page => { page => 1, format => 'html' };
+% my $url = url_for slide => { slide => simple_slides->first_slide, format => 'html' };
 <!DOCTYPE html>
 <html>
   <head>
