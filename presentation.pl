@@ -33,7 +33,7 @@ any '/:page' => { page => 1 } => sub {
 };
 
 # update with the total number of pages
-app->defaults( 'pages' => 17 );
+app->defaults( 'pages' => 19 );
 
 app->start;
 
@@ -81,7 +81,6 @@ __DATA__
 
 % end
 
-
 @@ 3.html.ep
 
 % title 'Getting Help';
@@ -111,6 +110,14 @@ __DATA__
 % end
 
 @@ 4.html.ep
+
+% title q{OH HAI!};
+
+%= tag div => class => center => begin
+  %= image 'oh-hai.jpg'
+% end
+
+@@ 5.html.ep
 
 % title q{Mojolicious::Lite 'Hello World'};
 
@@ -163,7 +170,7 @@ app->start;
   </ul>
 % end
 
-@@ 5.html.ep
+@@ 6.html.ep
 
 % title q{Mojolicious::Lite 'Hello User'};
 
@@ -185,7 +192,7 @@ app->start;
 
 % end
 
-@@ 6.html.ep
+@@ 7.html.ep
 
 % title q{Testing 'Hello User'};
 
@@ -204,6 +211,9 @@ app->start;
     </ul>
 
     <p> ... but do I really just have to regex the result??? </p>
+    %= tag div => class => center => begin
+      %= image 'orly_owl.jpg', width => '50%'
+    % end
   % end
 
   %= column begin
@@ -212,7 +222,7 @@ app->start;
 
 % end
 
-@@ 7.html.ep
+@@ 8.html.ep
 
 % title q{Aside: Mojo::DOM};
 
@@ -238,7 +248,7 @@ app->start;
 
 % end
 
-@@ 8.html.ep
+@@ 9.html.ep
 
 % title q{Testing 'Hello User' with Selectors};
 
@@ -263,7 +273,7 @@ app->start;
 
 % end
 
-@@ 9.html.ep
+@@ 10.html.ep
 
 % title 'Helpers and Sessions (Login Example)';
 
@@ -277,6 +287,9 @@ app->start;
       %= tag li => q{Helpers (and other things) can be bundled and distributed as 'plugins'}
       %= tag li => q{Session info is signed and stored in a cookie}
     </ul>
+    %= tag div => class => center => begin
+      %= image 'eated-cookie-lolcat.jpg', width => '50%'
+    % end
   % end
 
   %= column begin
@@ -285,7 +298,7 @@ app->start;
 
 % end
 
-@@ 10.html.ep
+@@ 11.html.ep
 
 % title q{Aside: Mojo::UserAgent};
 
@@ -309,7 +322,7 @@ app->start;
 
 % end
 
-@@ 11.html.ep
+@@ 12.html.ep
 
 % title 'Testing Login Example';
 
@@ -329,11 +342,36 @@ app->start;
 
 % end
 
-@@ 12.html.ep
+@@ 13.html.ep
 
 % title q{Content Negotiation};
 
 %= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'RESTful apps often support many formats'
+      %= tag li => begin 
+        the helper 
+        %= ppi 'respond_to'
+      % end 
+        <ul>
+          %= tag li => 'detects requested format' 
+          %= tag li => 'renders for that format'
+        </ul>
+      %= tag li => begin
+        %= ppi 'render_not_found'
+        renders a 404 page
+      % end
+      %= tag li => begin
+        %= ppi 'render_exception'
+        renders a 500 page
+      % end 
+    </ul>
+    %= tag div => class => center => begin
+      %= image 'erm.jpg', width => '50%'
+    % end
+  % end
 
   %= column begin
     %= ppi 'ex/content.pl'
@@ -341,11 +379,24 @@ app->start;
 
 % end
 
-@@ 13.html.ep
+@@ 14.html.ep
 
 % title q{Testing Content Negotiation};
 
 %= columns begin
+
+  %= column begin
+    <ul>
+      %= tag li => 'Test for formatted response by'
+      <ul>
+        %= tag li => 'default'
+        %= tag li => 'query parameter'
+        %= tag li => 'extension'
+        %= tag li => q{'Accept' header} 
+      </ul>
+      %= tag li => q{Test the 'not found' 404}
+    </ul>
+  % end
 
   %= column begin
     %= ppi 'ex/content.t'
@@ -353,7 +404,15 @@ app->start;
 
 % end
 
-@@ 14.html.ep
+@@ 15.html.ep
+
+% title q{Still not impressed?};
+
+%= tag div => class => center => begin
+  %= image 'mckayla.png'
+% end
+
+@@ 16.html.ep
 
 % title q{Non-blocking UserAgent + Server};
 
@@ -373,7 +432,7 @@ app->start;
 
 % end
 
-@@ 15.html.ep
+@@ 17.html.ep
 
 % title q{WebSockets};
 
@@ -394,7 +453,7 @@ app->start;
 
 % end
 
-@@ 16.html.ep
+@@ 18.html.ep
 
 % title q{Testing WebSockets};
 
@@ -417,7 +476,7 @@ app->start;
 
 % end
 
-@@ 17.html.ep
+@@ 19.html.ep
 
 % title q{Mojolicious::Commands};
 
