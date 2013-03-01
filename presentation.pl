@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 
 use Mojolicious::Lite;
-use lib 'lib';
 
 plugin 'PPI';
 
