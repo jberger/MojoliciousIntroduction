@@ -7,6 +7,10 @@ plugin 'PPI';
 my $slides = plugin 'SimpleSlides';
 $slides->column_width('50')->last_slide(20);
 
+if ( $ENV{PERL_WALLFLOWER} ) {
+  $slides->base_href('/MojoliciousIntroduction');
+}
+
 any '/index' => 'index';
 
 app->start;

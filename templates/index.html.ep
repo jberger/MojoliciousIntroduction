@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
   <head>
+    % if ( my $href = simple_slides->base_href ) {
+      %= tag base => href => $href
+    % }
     <meta http-equiv="refresh" content="0;url=<%= $url %>" />
   </head>
   <body>
