@@ -5,7 +5,7 @@ use Mojolicious::Lite;
 plugin 'PPI';
 
 my $slides = plugin 'SimpleSlides';
-$slides->column_width('50')->last_slide(20);
+$slides->column_width('50')->last_slide(21);
 
 any '/index' => 'index';
 
@@ -24,6 +24,10 @@ __DATA__
 % end
 
 @@ 2.html.ep
+
+% title q{About this talk};
+
+@@ 3.html.ep
 
 % title q{What is Mojolicious?};
 
@@ -55,7 +59,7 @@ __DATA__
 
 % end
 
-@@ 3.html.ep
+@@ 4.html.ep
 
 % title 'Getting Help';
 
@@ -83,7 +87,7 @@ __DATA__
 
 % end
 
-@@ 4.html.ep
+@@ 5.html.ep
 
 % title q{OH HAI!};
 
@@ -91,7 +95,7 @@ __DATA__
   %= image 'oh-hai.jpg'
 % end
 
-@@ 5.html.ep
+@@ 6.html.ep
 
 % title q{Mojolicious::Lite 'Hello World'};
 
@@ -146,7 +150,7 @@ app->start;
   </ul>
 % end
 
-@@ 6.html.ep
+@@ 7.html.ep
 
 % title q{Mojolicious::Lite 'Hello User'};
 
@@ -168,7 +172,7 @@ app->start;
 
 % end
 
-@@ 7.html.ep
+@@ 8.html.ep
 
 % title q{Testing 'Hello User'};
 
@@ -198,7 +202,7 @@ app->start;
 
 % end
 
-@@ 8.html.ep
+@@ 9.html.ep
 
 % title q{Aside: Mojo::DOM};
 
@@ -224,7 +228,7 @@ app->start;
 
 % end
 
-@@ 9.html.ep
+@@ 10.html.ep
 
 % title q{Testing 'Hello User' with Selectors};
 
@@ -249,7 +253,7 @@ app->start;
 
 % end
 
-@@ 10.html.ep
+@@ 11.html.ep
 
 % title 'Helpers and Sessions (Login Example)';
 
@@ -274,7 +278,7 @@ app->start;
 
 % end
 
-@@ 11.html.ep
+@@ 12.html.ep
 
 % title q{Aside: Mojo::UserAgent};
 
@@ -298,7 +302,7 @@ app->start;
 
 % end
 
-@@ 12.html.ep
+@@ 13.html.ep
 
 % title 'Testing Login Example';
 
@@ -318,7 +322,7 @@ app->start;
 
 % end
 
-@@ 13.html.ep
+@@ 14.html.ep
 
 % title q{Content Negotiation};
 
@@ -355,7 +359,7 @@ app->start;
 
 % end
 
-@@ 14.html.ep
+@@ 15.html.ep
 
 % title q{Testing Content Negotiation};
 
@@ -380,7 +384,7 @@ app->start;
 
 % end
 
-@@ 15.html.ep
+@@ 16.html.ep
 
 % title q{Still not impressed?};
 
@@ -388,7 +392,7 @@ app->start;
   %= image 'mckayla.png'
 % end
 
-@@ 16.html.ep
+@@ 17.html.ep
 
 % title q{Non-blocking UserAgent + Server};
 
@@ -408,7 +412,7 @@ app->start;
 
 % end
 
-@@ 17.html.ep
+@@ 18.html.ep
 
 % title q{WebSockets};
 
@@ -429,7 +433,7 @@ app->start;
 
 % end
 
-@@ 18.html.ep
+@@ 19.html.ep
 
 % title q{Testing WebSockets};
 
@@ -452,7 +456,7 @@ app->start;
 
 % end
 
-@@ 19.html.ep
+@@ 20.html.ep
 
 % title q{Mojolicious::Commands};
 
@@ -486,7 +490,7 @@ app->start;
   % end
 </ul>
 
-@@ 20.html.ep
+@@ 21.html.ep
 
 % title 'Thanks for listening!';
 
