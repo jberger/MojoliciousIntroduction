@@ -1,5 +1,4 @@
 use Mojolicious::Lite;
-use Mojo::JSON 'j';
 
 any '/' => 'index';
 
@@ -10,7 +9,7 @@ websocket '/data' => sub {
     my ($self, $text) = @_;
     $timer = Mojo::IOLoop->recurring( 1 => sub {
       state $i = 0;
-      $self->send({ text => j(get_data($i++)) }); 
+      $self->send({ json => get_data($i++) }); 
     });
   });
 

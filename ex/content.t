@@ -21,7 +21,7 @@ $t->get_ok('/2?format=txt')
 
 $t->get_ok('/1.json')
   ->status_is(200)
-  ->json_content_is({foo => 'bar'});
+  ->json_is({foo => 'bar'});
 
 $t->get_ok('/2', { Accept => 'application/json' })
   ->status_is(200)
