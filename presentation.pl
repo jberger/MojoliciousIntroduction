@@ -2,7 +2,7 @@
 
 use Mojolicious::Lite;
 
-plugin 'PPI';
+plugin 'PPI', toggle_button => 1;
 
 my $slides = plugin 'SimpleSlides';
 $slides->column_width('50')->last_slide(21);
