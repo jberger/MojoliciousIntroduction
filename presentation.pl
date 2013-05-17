@@ -27,6 +27,22 @@ __DATA__
 
 % title q{About this talk};
 
+%= tag div => style => 'margin: 0px auto; width: 60%;' => begin
+  <ul>
+    %= tag li => 'I gave this talk at Chicago.pm on Feb 28, 2013'
+    %= tag li => 'I updated it on May 17, 2013 for Mojolicious 4.0'
+    %= tag li => 'This talk is itself a Mojolicious app!'
+    %= tag li => begin
+      The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction">https://github.com/jberger/MojoliciousIntroduction</a>
+    % end 
+    %= tag li => 'All code samples and all tests are included'
+    %= tag li => begin
+      The talk is hosted at <a href="http://mojolicious-introduction.herokuapp.com/">http://mojolicious-introduction.herokuapp.com/</a>
+    % end 
+  </ul>
+
+% end
+
 @@ 3.html.ep
 
 % title q{What is Mojolicious?};
@@ -516,6 +532,6 @@ If you liked that, see also
   % end
   %= tag li => begin
     <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::SimpleSlides' => begin %>Mojolicious::Plugin::SimpleSlides<%= end %> 
-    - The "abuse of Mojo::Template" slide plugin written especially for this talk (coming soon)
+    - The "abuse of Mojo::Template" slide plugin written especially for this talk
   % end
 </ul>
