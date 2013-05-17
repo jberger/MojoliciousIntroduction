@@ -48,8 +48,8 @@ __DATA__
       %= tag li => 'Batteries included'
       %= tag li => 'Real-time and non-blocking'
       %= tag li => 'Web scale'
-      %= tag li => '9215 lines of code in lib'
-      %= tag li => '10052 tests'
+      %= tag li => '8928 lines of code in lib'
+      %= tag li => '9711 tests'
       %= tag li => begin
         Easy to install (takes only one minute!)
         %= code_line q{curl get.mojolicio.us | sh}
