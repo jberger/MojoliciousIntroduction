@@ -480,7 +480,7 @@ app->start;
   %= tag li => begin
     UserAgent get something from the web
     %= code_line q{mojo get www.reddit.com/r/perl/ 'p.title > a.title' text}
-    %= code_line q{mojo get http://search.twitter.com/search.json?q=perl /results/0/text}
+    %= code_line q{mojo get http://api.metacpan.org/v0/module/Text::Xslate /module/0/version_numified}
   % end
   %= tag li => begin
     UserAgent get from your app!
@@ -531,7 +531,7 @@ If you liked that, see also
     - Perl syntax highlighting for Mojolicious
   % end
   %= tag li => begin
-    <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::SimpleSlides' => begin %>Mojolicious::Plugin::SimpleSlides<%= end %> 
-    - The "abuse of Mojo::Template" slide plugin written especially for this talk
+    <%= link_to 'http://metacpan.org/module/App::MojoSlides' => begin %>App::MojoSlides<%= end %> 
+    - The "abuse of Mojo::Template" slide plugin written for YAPC::Brasil 2013
   % end
 </ul>
