@@ -30,15 +30,15 @@ __DATA__
 %= tag div => style => 'margin: 0px auto; width: 60%;' => begin
   <ul>
     %= tag li => 'I gave this talk at Chicago.pm on Feb 28, 2013'
-    %= tag li => 'I updated it on May 17, 2013 for Mojolicious 4.0'
+    %= tag li => 'I updated it on Jan 11, 2015 for MadMongers'
     %= tag li => 'This talk is itself a Mojolicious app!'
     %= tag li => begin
       The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction">https://github.com/jberger/MojoliciousIntroduction</a>
-    % end 
+    % end
     %= tag li => 'All code samples and all tests are included'
     %= tag li => begin
       The talk is hosted at <a href="http://mojolicious-introduction.herokuapp.com/">http://mojolicious-introduction.herokuapp.com/</a>
-    % end 
+    % end
   </ul>
 
 % end
@@ -47,7 +47,7 @@ __DATA__
 
 % title q{What is Mojolicious?};
 
-%= columns begin 
+%= columns begin
 
   %= column align => middle => begin
     %= image 'noraptor.png'
@@ -59,7 +59,7 @@ __DATA__
       %= tag li => q{'Duct tape for the HTML5 web'}
       %= tag li => 'Designed from the ground up'
       %= tag li => '... based on years of experience developing Catalyst'
-      %= tag li => 'Portable' 
+      %= tag li => 'Portable'
       %= tag li => 'No non-core dependencies'
       %= tag li => 'Batteries included'
       %= tag li => 'Real-time and non-blocking'
@@ -87,7 +87,7 @@ __DATA__
 
   %= column align => middle => begin
     <ul>
-      %= tag li => begin 
+      %= tag li => begin
         <%= link_to 'http://mojolicio.us' => begin %>http://mojolicio.us<% end %>
       % end
       %= tag li => begin
@@ -144,7 +144,7 @@ app->start;
   Start the server
   <ul>
     %= tag li => begin
-      basic server 
+      basic server
       %= code_line q{./script daemon}
     % end
     %= tag li => begin
@@ -347,22 +347,22 @@ app->start;
   %= column begin
     <ul>
       %= tag li => 'RESTful apps often support many formats'
-      %= tag li => begin 
-        the helper 
+      %= tag li => begin
+        the helper
         %= ppi 'respond_to'
-      % end 
+      % end
         <ul>
-          %= tag li => 'detects requested format' 
+          %= tag li => 'detects requested format'
           %= tag li => 'renders for that format'
         </ul>
       %= tag li => begin
-        %= ppi 'render_not_found'
+        %= ppi 'reply->not_found'
         renders a 404 page
       % end
       %= tag li => begin
-        %= ppi 'render_exception'
+        %= ppi 'reply->exception'
         renders a 500 page
-      % end 
+      % end
     </ul>
     %= tag div => class => center => begin
       %= image 'erm.jpg', width => '50%'
@@ -388,7 +388,7 @@ app->start;
         %= tag li => 'default'
         %= tag li => 'query parameter'
         %= tag li => 'extension'
-        %= tag li => q{'Accept' header} 
+        %= tag li => q{'Accept' header}
       </ul>
       %= tag li => q{Test the 'not found' 404}
     </ul>
@@ -516,22 +516,34 @@ app->start;
   %= image 'cannot_be_unseen.jpg', width => '250px'
 % end
 
-If you liked that, see also 
+If you liked that, see also
 <ul>
   %= tag li => begin
-    <%= link_to 'http://metacpan.org/module/Mango' => begin %>Mango<%= end %> 
-    - The new MongoDB driver written by author of Mojolicious
-  % end 
+    <%= link_to 'http://metacpan.org/module/Mojo::Pg' => begin %>Mojo::Pg<%= end %>
+    - The Postgres driver wrapper written by author of Mojolicious
+  % end
   %= tag li => begin
-    <%= link_to 'http://metacpan.org/module/Galileo' => begin %>Galileo<%= end %> 
+    <%= link_to 'http://metacpan.org/module/Minion' => begin %>Minion<%= end %>
+    - The job queue and plugin written by author of Mojolicious
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Galileo' => begin %>Galileo<%= end %>
     - My CPAN friendly CMS which runs on top of Mojolicious
   % end
   %= tag li => begin
-    <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::PPI' => begin %>Mojolicious::Plugin::PPI<%= end %> 
+    <%= link_to 'http://metacpan.org/module/Convos' => begin %>Convos<%= end %>
+    - The in-browser IRC client which runs on top of Mojolicious
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::PPI' => begin %>Mojolicious::Plugin::PPI<%= end %>
     - Perl syntax highlighting for Mojolicious
   % end
   %= tag li => begin
-    <%= link_to 'http://metacpan.org/module/App::MojoSlides' => begin %>App::MojoSlides<%= end %> 
+    <%= link_to 'http://metacpan.org/module/App::MojoSlides' => begin %>App::MojoSlides<%= end %>
     - The "abuse of Mojo::Template" slide plugin written for YAPC::Brasil 2013
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mango' => begin %>Mango<%= end %>
+    - The MongoDB driver written by author of Mojolicious, though not recommended anymore
   % end
 </ul>

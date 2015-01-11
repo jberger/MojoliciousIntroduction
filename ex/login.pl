@@ -36,7 +36,7 @@ __DATA__
 
 % unless ($user) {
   %= form_for '/' => method => 'POST' => begin
-    Usename: <%= input_tag 'user' %> <br>
+    Username: <%= input_tag 'user' %> <br>
     Password <%= password_field 'pass' %> <br>
     %= submit_button
   % end
