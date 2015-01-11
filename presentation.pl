@@ -64,8 +64,8 @@ __DATA__
       %= tag li => 'Batteries included'
       %= tag li => 'Real-time and non-blocking'
       %= tag li => 'Web scale'
-      %= tag li => '8928 lines of code in lib'
-      %= tag li => '9711 tests'
+      %= tag li => '8815 lines of code in lib'
+      %= tag li => '10670 tests'
       %= tag li => begin
         Easy to install (takes only one minute!)
         %= code_line q{curl get.mojolicio.us | sh}
@@ -533,6 +533,10 @@ If you liked that, see also
   %= tag li => begin
     <%= link_to 'http://metacpan.org/module/Convos' => begin %>Convos<%= end %>
     - The in-browser IRC client which runs on top of Mojolicious
+  % end
+  %= tag li => begin
+    <%= link_to 'http://metacpan.org/module/Mojolicious::Command::nopaste' => begin %>Mojolicious::Command::nopaste<%= end %>
+    - A nopaste clone using the Mojolicious toolkit (with some cool extras, like IRC posting)
   % end
   %= tag li => begin
     <%= link_to 'http://metacpan.org/module/Mojolicious::Plugin::PPI' => begin %>Mojolicious::Plugin::PPI<%= end %>
