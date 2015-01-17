@@ -13,7 +13,6 @@ $t->get_ok('/')
   ->element_exists( '#plot' );
 
 $t->websocket_ok('/data')
-  ->send_ok('anything')
   ->message_ok
   ->json_message_is( '/0' => 0 )
   ->json_message_has( '/1' )

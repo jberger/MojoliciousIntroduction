@@ -7,8 +7,8 @@ my %data = (
 
 any '/:id' => sub {
   my $self = shift;
-  my $item = $data{$self->stash('id')}
-    || return $self->reply->not_found;
+  return $self->reply->not_found
+    unless my $item = $data{$self->stash('id')};
 
   $self->respond_to(
     txt => { text => join(', ', %$item) },

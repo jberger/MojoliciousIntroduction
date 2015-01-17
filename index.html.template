@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Mojolicious Introduction</title>
+
+		<meta name="description" content="An introduction to the Mojolicious Web Framework">
+		<meta name="author" content="Joel Berger">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+    <style>
+      .reveal pre code { padding: 20px }
+      code.hljs.inline { 
+        display: initial; 
+        font-size: 80%;
+        margin: 0 10px 0 10px;
+      }
+    </style>
+  
+  </head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+
+<section>
+
+  <h1>Introduction to Mojolicious</h1>
+
+  <p>
+    <a href="http://mojolicio.us" target="_blank"><img height="200px" src="public/unicorn.png"></a>
+  </p>
+
+</section>
+
+<section>
+
+  <h2>About this talk</h2>
+
+  <ul>
+    <li>I first gave this talk at Chicago.pm on Feb 28, 2013</li>
+    <li>I updated it on Jan 11, 2015 for MadMongers</li>
+    <li>The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction" target="_blank">https://github.com/jberger/MojoliciousIntroduction</a></li>
+    <li>All code samples and all tests are included</li>
+    <li>The talk is hosted at <a href="http://mojolicious-introduction.herokuapp.com/" target="_blank">http://mojolicious-introduction.herokuapp.com/</a></li>
+  </ul>
+
+</section>
+
+<section>
+  <section>
+    <h2>What is Mojolicious?</h2>
+
+    <img src="public/noraptor.png">
+
+    <ul>
+      <li>A web framework for Perl</li>
+      <li>"Duct tape for the HTML5 web"</li>
+      <li>Designed from the ground up</li>
+      <li>... based on years of experience developing Catalyst</li>
+    </ul>
+  </section>
+
+  <section>
+    <ul>
+      <li>Portable</li>
+      <li>No non-core dependencies</li>
+      <li>Batteries included</li>
+      <li>Real-time and non-blocking</li>
+      <li>"Web scale"</li>
+      <li>8815 lines of code in lib</li>
+      <li>10670 tests</li>
+      <li>Easy to install (takes only one minute!) <pre><code>curl get.mojolicio.us | sh</code></pre>
+    </ul>
+  </section>
+</section>
+
+<section>
+
+  <h2>Getting Help</h2>
+
+  <img height="200px" style="float: left;" src="public/failraptor.png">
+
+  <ul>
+    <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
+    <li><a href="http://mojocasts.com/e1" target="_blank">http://mojocasts.com/e1</a></li>
+    <li><a href="http://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org" target="_blank">#mojo on irc.perl.org</a></li>
+  </ul>
+</section>
+
+<section>
+  <h2>On with the talk...</h2>
+  <img src="public/oh-hai.jpg">
+</section>
+
+<section>
+  <section>
+    <h2>Mojolicious::Lite</h2>
+    <h4>"Hello World"</h4>
+    <pre><code class="perl" data-trim>
+use Mojolicious::Lite;
+
+any '/' => sub { shift->render( text => 'Hello World' ) };
+
+app->start;
+    </code></pre>
+  </section>
+  <section>
+    <ul>
+      <li>imports strict, warnings, utf8 and v5.10</li>
+      <li>handles the '/' route
+        <ul>
+          <li>renders the text (as text)</li>
+        </ul>
+      </li>
+      <li>starts the app</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Start the server</h3>
+    <ul>
+      <li>basic server: <code class="hljs inline">$ ./script daemon</code></li>
+      <li>
+        development server, smooth auto-restarting on file change:
+        <code class="hljs inline">$ morbo script</code>
+      </li>
+      <li>
+        high performance preforking server, zero downtime redeployment:
+        <code class="hljs inline">$ hypnotoad script</code>
+      </li>
+      <li>
+        plack/psgi (no real-time features):
+        <code class="hljs inline">$ plackup script</code>
+        or <code class="hljs inline">$ starman script</code>
+      </li>
+      <li>CGI (but why?)</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Mojolicious::Lite</h2>
+    <h4>"Hello User"</h4>
+    <ul>
+      <li>handles all toplevel routes, including '/'</li>
+      <li>stashes route matches</li>
+      <li>other stash values can be added</li>
+      <li>renders from a template with layout</li>
+      <li>stash values localized to Perl scalars</li>
+    </ul>
+  </section>
+  <section>
+    <!-- include ex/hello.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing "Hello User"</h2>
+
+    <!-- include ex/hello1.t -->
+  </section>
+
+  <section>
+    <ul>
+      <li>Load the app into <a href="http://mojolicio.us/perldoc/Test/Mojo">Test::Mojo</a></li>
+      <ul>
+        <li>"Lite" apps must require the app</li>
+        <li>"Full" apps pass class name to <code class="hljs inline">Test::Mojo->new</code></li>
+      </ul>
+      <li>Request content</li>
+      <li>Test status</li>
+      <li>Test response and content</li>
+    </ul>
+  </section>
+</section>
+
+<section>
+    <h3> ... but do I really just have to regex the result??? </h3>
+    
+    <img src="public/orly_owl.jpg">
+</section>
+
+<section>
+  <section>
+    <h2>Aside: <a href="http://mojolicio.us/perldoc/Mojo/DOM">Mojo::DOM</a></h2>
+    <h4>The power of CSS3 selectors</h4>
+
+    <ul>
+      <li>HTML/XML parser</li>
+      <li>CSS3 selectors (all of them)</li>
+      <li>List of supported selectors in <a href="http://mojolicio.us/perldoc/Mojo/DOM/CSS">Mojo::DOM::CSS</a></li>
+      <li>First: <code class="hljs inline">$dom->at($selector)</code> returns a <a href="http://mojolicio.us/perldoc/Mojo/DOM">Mojo::DOM</a></li>
+      <li>Multiple: <code class="hljs inline">$dom->find($selector)</code> returns a <a href="http://mojolicio.us/perldoc/Mojo/Collection">Mojo::Collection</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/dom_example.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing "Hello User"</h2>
+    <h3>With selectors</h3>
+
+    <ul>
+      <li>Many Test::Mojo methods support selectors</li>
+      <li>Test::Mojo has all the power of</li>
+      <ul>
+        <li><a href="http://mojolicio.us/perldoc/Mojo/DOM">Mojo::DOM</a></li>
+        <li><a href="http://mojolicio.us/perldoc/Mojo/JSON">Mojo::JSON</a></li>
+        <li><a href="http://mojolicio.us/perldoc/Mojo/UserAgent">Mojo::UserAgent</a></li>
+      </ul>
+      <li>Wraps many useful functions of <a href="http://p3rl.org/Test::More">Test::More</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/hello2.t -->
+  </section>
+</section>
+
+<section>
+
+  <section>
+    <h2>Helpers</h2>
+
+    <ul>
+      <li>"helpers" are methods on the app and controller and are template functions</li>
+      <li>Helpers (and other things) can be bundled and distributed as "plugins"</li>
+      <li>Many helpers are available via plugins loaded by default
+        <ul>
+          <li><a href="http://mojolicio.us/perldoc/Mojolicious/Plugin/DefaultHelpers">Mojolicious::Plugin::DefaultHelpers</a></li>
+          <li><a href="http://mojolicio.us/perldoc/Mojolicious/Plugin/TagHelpers">Mojolicious::Plugin::TagHelpers</a></li>
+        </ul>
+      </li>
+    </ul>
+
+  </section>
+
+  <section>
+    <h2>Sessions</h2>
+    <p>Session info is signed and stored in a cookie</li>
+
+    <img src="public/eated-cookie-lolcat.jpg">
+  </section>
+
+  <section>
+    <h2>Login App Example</h2>
+
+    <!-- include ex/login.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Aside: <a href="http://mojolicio.us/perldoc/Mojo/UserAgent">Mojo::UserAgent</a></h2>
+
+    <ul>
+      <li>Full featured user agent</li>
+      <li>Built-in cookie jar</li>
+      <li>Handles redirects</li>
+      <li>SSL and proxy support</li>
+      <li>dom and json response methods</li>
+      <li>Pluggable content generators (form/json)</li>
+      <li>Non-blocking with callback</li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/ua_example.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing Login Example</h2>
+
+    <ul>
+      <li>Test that the form is only shown when not authenticated</li>
+      <li>UserAgent generates form content from hash</li>
+      <li>UserAgent follows logout redirect</li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/login.t -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Content Negotiation</h2>
+
+    <img src="public/erm.jpg">
+  </section>
+
+  <section>
+    <h2>Content Negotiation</h2>
+
+    <ul>
+      <li>RESTful apps often support many formats</li>
+      <li>the helper 'respond_to'</li>
+        <ul>
+          <li>detects requested format</li>
+          <li>renders for that format</li>
+        </ul>
+      <li><code class="hljs inline">reply->not_found</code> renders a 404 page</li>
+      <li><code class="hljs inline">reply->exception</code> renders a 500 page</li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/content.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing Content Negotiation</h2>
+
+    <ul>
+      <li>Test for formatted response by</li>
+      <ul>
+        <li>default</li>
+        <li>query parameter</li>
+        <li>extension</li>
+        <li>Accept header</li>
+      </ul>
+      <li>Test the 'not found' 404</li>
+    </ul>
+  </section>
+
+  <section>
+  <!-- include ex/content.t -->
+  </section>
+</section>
+
+<section>
+  <h2>Still not impressed?</h2>
+
+  <img src="public/mckayla.png">
+</section>
+
+<section>
+  <section>
+    <h2>Let's write a POD website that</h2>
+    <ul>
+      <li>Requests module documentation from metacpan</li>
+      <li>Waits to render the response</li>
+      <li>Doesn't block while waiting</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Non-blocking</h2>
+    <h2>UserAgent + Server</h2>
+    <!-- include ex/nb_doc_server.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>WebSockets</h2>
+
+    <ul>
+      <li>Client opens websocket</li>
+      <li>Server responds with data every second</li>
+      <li>Client receives data and updates plot</li>
+      <li>Real app would get some more interesting data</li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/websocket.pl -->
+  </section>
+</section>
+
+<section>
+  <section>
+    <h2>Testing WebSockets</h2>
+
+    <ul>
+      <li>Testing is just as easy!</li>
+      <li>Send a message</li>
+      <li>Wait for a response</li>
+      <li>Test response using JSON pointer</li>
+      <li>Repeat or finish</li>
+      <li>Many other websocket test methods</li>
+    </ul>
+  </section>
+
+  <section>
+    <!-- include ex/websocket.t -->
+  </section>
+</section>
+
+<section>
+
+  <section>
+    <h2>Mojolicious::Commands</h2>
+
+    <ul>
+      <li>
+        Fetch, parse and extract resources from the internet
+        <pre><code>mojo get www.reddit.com/r/perl/ 'p.title > a.title' text</code></pre>
+        <pre><code>mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
+      </li>
+      <li>
+        ... or from your own app!
+        <pre><code>./ex/hello.pl get / p 1 text</code></pre>
+      </li>
+      <li>
+        Examine the routes that your app defines
+        <pre><code>./ex/websocket.pl routes</code></pre>
+      </li>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        Run some ad-hoc code against your app!
+        <pre><code>./ex/websocket.pl eval -v 'app->home'</code></pre>
+        <pre><code>./ex/websocket.pl eval -V 'app->secrets'</code></pre>
+      </li>
+      <li>
+        Generate a new app or plugin
+        <pre><code>mojo generate lite_app</code></pre>
+        <pre><code>mojo generate app</code></pre>
+        <pre><code>mojo generate plugin</code></pre>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        Add your own commands to Mojolicious:
+        <pre><code>mojo nopaste gist myfile.pl</code></pre>
+      </li>
+      <li>
+        ... or to your own app:
+        <pre><code>galileo setup</code></pre>
+      </li>
+      <li>
+        ... or import commands from CPAN:
+        <pre><code>./myapp.pl minion worker</code></pre>
+      </li>
+    </ul>
+  </section>
+</section>
+
+<section>
+  <h2>If you liked that, see also</h2>
+  
+  <ul>
+    <li>
+      <a href="http://metacpan.org/module/Mojo::Pg">Mojo::Pg</a>
+      - The Mojolicious Postgres driver wrapper
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Minion">Minion</a>
+      - The Mojolicious job queue and plugin
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Galileo">Galileo</a>
+      - My CPAN friendly Mojolicious-based CMS
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Convos">Convos</a>
+      - The in-browser Mojolicious-based IRC client
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Mojolicious::Command::nopaste">Mojolicious::Command::nopaste</a>
+      - A Mojo-based nopaste clone with some cool extras (like IRC posting)
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Mojo::Redis2">Mojo::Redis2</a>
+      - Redis driver, great for messaging
+    </li>
+    <li>
+      <a href="http://metacpan.org/module/Mango">Mango</a>
+      - MongoDB driver, no longer recommended
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Thanks for listening!</h2>
+
+  <img src="public/cannot_be_unseen.jpg">
+</section>
+
+<section>
+  <h2>Now go have fun with Mojolicious!</h2>
+</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

@@ -4,13 +4,9 @@ any '/' => 'index';
 
 websocket '/data' => sub {
   my $self = shift;
-  my $timer;
-  $self->on( text => sub {
-    my ($self, $text) = @_;
-    $timer = Mojo::IOLoop->recurring( 1 => sub {
-      state $i = 0;
-      $self->send({ json => get_data($i++) }); 
-    });
+  my $timer = Mojo::IOLoop->recurring( 1 => sub {
+    state $i = 0;
+    $self->send({ json => gen_data($i++) }); 
   });
 
   $self->on( finish => sub {
@@ -18,7 +14,7 @@ websocket '/data' => sub {
   });
 };
 
-sub get_data { 
+sub gen_data { 
   my $x = shift; 
   return [ $x, sin( $x + 2*rand() - 2*rand() ) ]
 }
@@ -43,7 +39,6 @@ __DATA__
 
   var url = '<%= url_for('data')->to_abs %>';
   var ws = new WebSocket( url );
-  ws.onopen = function(){ this.send('hi') };
   ws.onmessage = function(e){
     var point = JSON.parse(e.data);
     data.push(point);
