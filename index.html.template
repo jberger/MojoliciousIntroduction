@@ -75,6 +75,18 @@
 </section>
 
 <section>
+  <h2>Getting Help</h2>
+
+  <img height="200px" style="float: left;" src="public/failraptor.png">
+
+  <ul>
+    <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
+    <li><a href="http://mojocasts.com/e1" target="_blank">http://mojocasts.com/e1</a></li>
+    <li><a href="http://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org" target="_blank">#mojo on irc.perl.org</a></li>
+  </ul>
+</section>
+
+<section>
   <h2>On with the talk...</h2>
   <img src="public/oh-hai.jpg">
 </section>
@@ -106,19 +118,6 @@
     </ul>
     <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
   </section>
-</section>
-
-<section>
-
-  <h2>Getting Help</h2>
-
-  <img height="200px" style="float: left;" src="public/failraptor.png">
-
-  <ul>
-    <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
-    <li><a href="http://mojocasts.com/e1" target="_blank">http://mojocasts.com/e1</a></li>
-    <li><a href="http://chat.mibbit.com/?channel=%23mojo&server=irc.perl.org" target="_blank">#mojo on irc.perl.org</a></li>
-  </ul>
 </section>
 
 <section>
