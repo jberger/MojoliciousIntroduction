@@ -523,6 +523,10 @@ app->start;
 
 <section>
   <h2>Now go have fun with Mojolicious!</h2>
+
+  <p><a href="http://mojolicio.us">http://mojolicio.us</a></p>
+  
+  <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 </section>
 			</div>
 
