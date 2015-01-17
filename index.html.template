@@ -97,7 +97,9 @@
       <li>"Web scale"</li>
       <li>8815 lines of code in lib</li>
       <li>10670 tests</li>
-      <li>Easy to install (takes only one minute!) <pre><code>curl get.mojolicio.us | sh</code></pre>
+      <li>Easy to install (secure, only takes one minute!)
+        <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+      </li>
     </ul>
   </section>
 </section>
