@@ -175,11 +175,19 @@ app->start;
     <h2>Mojolicious::Lite</h2>
     <h4>"Hello User"</h4>
     <ul>
-      <li>handles all toplevel routes, including '/'</li>
+      <li>handles all toplevel routes, including <code class="hljs inline">/</code>
+        <ul>
+          <li><code class="hljs inline">/Joel</code> becomes 'Hello Joel'</li>
+          <li><code class="hljs inline">/</code> is special cased to <code class="hljs inline">/World</code></li> 
+        </ul>
+      </li>
       <li>stashes route matches</li>
-      <li>other stash values can be added</li>
-      <li>renders from a template with layout</li>
-      <li>stash values localized to Perl scalars</li>
+      <li>stash some other useful values</li>
+      <li>renders from a template with layout
+        <ul>
+          <li>stash values are localized to Perl scalars</li>
+        </ul>
+      </li>
     </ul>
   </section>
   <section>
