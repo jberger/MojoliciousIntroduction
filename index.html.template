@@ -66,7 +66,7 @@
 
   <ul>
     <li>I first gave this talk at Chicago.pm on Feb 28, 2013</li>
-    <li>I updated it on Jan 11, 2015 for MadMongers</li>
+    <li>I updated it on Feb 10, 2015 for MadMongers</li>
     <li>The talk is hosted at <a href="http://jberger.github.io/MojoliciousIntroduction" target="_blank">http://jberger.github.io/MojoliciousIntroduction</a></li>
     <li>The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction" target="_blank">https://github.com/jberger/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
@@ -117,8 +117,8 @@
       <li>Batteries included</li>
       <li>Real-time and non-blocking</li>
       <li>"Web scale"</li>
-      <li>8815 lines of code in lib</li>
-      <li>10670 tests</li>
+      <li>8778 lines of code in lib</li>
+      <li>10773 tests (91.3% coverage)</li>
       <li>Easy to install (secure, only takes one minute!)</li>
     </ul>
     <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
