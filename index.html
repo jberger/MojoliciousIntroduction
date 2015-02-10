@@ -831,16 +831,16 @@ done_testing;
     <ul>
       <li>
         Fetch, parse and extract resources from the internet
-        <pre><code>mojo get www.reddit.com/r/perl/ 'p.title > a.title' text</code></pre>
-        <pre><code>mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
+        <pre><code class="bash">mojo get www.reddit.com/r/perl/ 'p.title > a.title' text</code></pre>
+        <pre><code class="bash">mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
       </li>
       <li>
         ... or from your own app!
-        <pre><code>./ex/hello.pl get / p 1 text</code></pre>
+        <pre><code class="bash">./ex/hello.pl get / p 1 text</code></pre>
       </li>
       <li>
         Examine the routes that your app defines
-        <pre><code>./ex/websocket.pl routes</code></pre>
+        <pre><code class="bash">./ex/websocket.pl routes</code></pre>
       </li>
   </section>
 
@@ -848,14 +848,14 @@ done_testing;
     <ul>
       <li>
         Run some ad-hoc code against your app!
-        <pre><code>./ex/websocket.pl eval -v 'app->home'</code></pre>
-        <pre><code>./ex/websocket.pl eval -V 'app->secrets'</code></pre>
+        <pre><code class="bash">./ex/websocket.pl eval -v 'app->home'</code></pre>
+        <pre><code class="bash">./ex/websocket.pl eval -V 'app->secrets'</code></pre>
       </li>
       <li>
         Generate a new app or plugin
-        <pre><code>mojo generate lite_app</code></pre>
-        <pre><code>mojo generate app</code></pre>
-        <pre><code>mojo generate plugin</code></pre>
+        <pre><code class="bash">mojo generate lite_app</code></pre>
+        <pre><code class="bash">mojo generate app</code></pre>
+        <pre><code class="bash">mojo generate plugin</code></pre>
       </li>
     </ul>
   </section>
@@ -864,15 +864,15 @@ done_testing;
     <ul>
       <li>
         Add your own commands to Mojolicious:
-        <pre><code>mojo nopaste gist myfile.pl</code></pre>
+        <pre><code class="bash">mojo nopaste gist myfile.pl</code></pre>
       </li>
       <li>
         ... or to your own app:
-        <pre><code>galileo setup</code></pre>
+        <pre><code class="bash">galileo setup</code></pre>
       </li>
       <li>
         ... or import commands from CPAN:
-        <pre><code>./myapp.pl minion worker</code></pre>
+        <pre><code class="bash">./myapp.pl minion worker</code></pre>
       </li>
     </ul>
   </section>
