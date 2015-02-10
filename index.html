@@ -187,7 +187,7 @@ app->start;
 <pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 
-any &#39;/:name&#39; =&gt; { name =&gt; &#39;Joel&#39; } =&gt; sub { 
+any &#39;/:name&#39; =&gt; { name =&gt; &#39;World&#39; } =&gt; sub { 
   my $self = shift;
   $self-&gt;stash( time =&gt; scalar localtime );
   $self-&gt;render( &#39;hello&#39; );
@@ -242,6 +242,11 @@ require &quot;$Bin/hello.pl&quot;;
 my $t = Test::Mojo-&gt;new;
 
 $t-&gt;get_ok(&#39;/&#39;)
+  -&gt;status_is(200)
+  -&gt;content_like(qr/Hello World/)
+  -&gt;content_like(qr/\d{2}:\d{2}/);
+
+$t-&gt;get_ok(&#39;/Joel&#39;)
   -&gt;status_is(200)
   -&gt;content_like(qr/Hello Joel/)
   -&gt;content_like(qr/\d{2}:\d{2}/);
@@ -342,6 +347,11 @@ require &quot;$Bin/hello.pl&quot;;
 my $t = Test::Mojo-&gt;new;
 
 $t-&gt;get_ok(&#39;/&#39;)
+  -&gt;status_is(200)
+  -&gt;text_is( p =&gt; &#39;Hello World&#39; )
+  -&gt;text_like( &#39;p:nth-of-type(2)&#39; =&gt; qr/\d{2}:\d{2}/ );
+
+$t-&gt;get_ok(&#39;/Joel&#39;)
   -&gt;status_is(200)
   -&gt;text_is( p =&gt; &#39;Hello Joel&#39; )
   -&gt;text_like( &#39;p:nth-of-type(2)&#39; =&gt; qr/\d{2}:\d{2}/ );

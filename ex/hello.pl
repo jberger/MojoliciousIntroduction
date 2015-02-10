@@ -1,6 +1,6 @@
 use Mojolicious::Lite;
 
-any '/:name' => { name => 'Joel' } => sub { 
+any '/:name' => { name => 'World' } => sub { 
   my $self = shift;
   $self->stash( time => scalar localtime );
   $self->render( 'hello' );
