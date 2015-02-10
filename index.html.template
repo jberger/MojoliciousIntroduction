@@ -121,7 +121,7 @@
       <li>10773 tests (91.3% coverage)</li>
       <li>Easy to install (secure, only takes one minute!)</li>
     </ul>
-    <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+    <pre><code class="bash">curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
   </section>
 </section>
 
