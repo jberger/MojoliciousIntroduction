@@ -1,18 +1,21 @@
 use Mojo::Base -strict;
 
 use Mojo::Util qw/slurp spurt trim xml_escape/;
+use Mojo::Template;
 
-my $format = <<'FORMAT';
-
+my $include = Mojo::Template->new;
+$include->parse(<<'INCLUDE')->build->compile;
+% my $file = shift;
 <pre><code class="perl" data-trim>
-%s
+  <%== Mojo::Util::slurp $file =%>
 </code></pre>
-FORMAT
+<p style="float: right; text-color: white; font-size: small;"><%== $file %></p>
+INCLUDE
 
 sub include {
   my $file = trim shift;
   warn "Including: $file\n";
-  sprintf $format, xml_escape(slurp $file);
+  $include->interpret($file);
 }
 
 my $template = slurp 'index.html.template';

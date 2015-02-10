@@ -183,8 +183,7 @@ app->start;
     </ul>
   </section>
   <section>
-    <!-- include ex/hello.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/hello.pl --><pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 
 any &#39;/:name&#39; =&gt; { name =&gt; &#39;World&#39; } =&gt; sub { 
@@ -219,8 +218,8 @@ __DATA__
 %= tag p =&gt; begin
   The time is now &lt;%= $time %&gt;
 % end
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/hello.pl</p>
 
   </section>
 </section>
@@ -229,8 +228,7 @@ __DATA__
   <section>
     <h2>Testing "Hello User"</h2>
 
-    <!-- include ex/hello1.t -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/hello1.t --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 
 use Test::More;
@@ -253,8 +251,8 @@ $t-&gt;get_ok(&#39;/Joel&#39;)
 
 done_testing;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/hello1.t</p>
 
   </section>
 
@@ -293,8 +291,7 @@ done_testing;
   </section>
 
   <section>
-    <!-- include ex/dom_example.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/dom_example.pl --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 use Mojo::DOM;
 
@@ -310,8 +307,8 @@ END
 my $dom = Mojo::DOM-&gt;new($html);
 say $dom-&gt;at(&#39;.something p&#39;)-&gt;text;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/dom_example.pl</p>
 
   </section>
 </section>
@@ -334,8 +331,7 @@ say $dom-&gt;at(&#39;.something p&#39;)-&gt;text;
   </section>
 
   <section>
-    <!-- include ex/hello2.t -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/hello2.t --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 
 use Test::More;
@@ -358,8 +354,8 @@ $t-&gt;get_ok(&#39;/Joel&#39;)
 
 done_testing;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/hello2.t</p>
 
   </section>
 </section>
@@ -392,8 +388,7 @@ done_testing;
   <section>
     <h2>Login App Example</h2>
 
-    <!-- include ex/login.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/login.pl --><pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 
 helper validate =&gt; sub {
@@ -438,8 +433,8 @@ __DATA__
   % end
 % }
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/login.pl</p>
 
   </section>
 </section>
@@ -460,8 +455,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/ua_example.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/ua_example.pl --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 use Mojo::UserAgent;
 
@@ -479,8 +473,8 @@ my $url = Mojo::URL-&gt;new(&#39;http://openlibrary.org/subjects/&#39;)
 say $url;
 say $ua-&gt;get($url)-&gt;res-&gt;json(&#39;/works/0/title&#39;);
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/ua_example.pl</p>
 
   </section>
 </section>
@@ -497,8 +491,7 @@ say $ua-&gt;get($url)-&gt;res-&gt;json(&#39;/works/0/title&#39;);
   </section>
 
   <section>
-    <!-- include ex/login.t -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/login.t --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 
 use Test::More;
@@ -527,8 +520,8 @@ $t-&gt;get_ok(&#39;/logout&#39;)
 
 done_testing;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/login.t</p>
 
   </section>
 </section>
@@ -556,8 +549,7 @@ done_testing;
   </section>
 
   <section>
-    <!-- include ex/content.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/content.pl --><pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 
 my %data = (
@@ -595,8 +587,8 @@ __DATA__
   All your &lt;%= $key %&gt; 
   are belong to &lt;%= $foo-&gt;{$key} %&gt;
 &lt;/p&gt;
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/content.pl</p>
 
   </section>
 </section>
@@ -618,8 +610,7 @@ __DATA__
   </section>
 
   <section>
-  <!-- include ex/content.t -->
-<pre><code class="perl" data-trim>
+  <!-- include ex/content.t --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 
 use Test::More;
@@ -651,8 +642,8 @@ $t-&gt;get_ok(&#39;/2&#39;, { Accept =&gt; &#39;application/json&#39; })
 
 done_testing;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/content.t</p>
 
   </section>
 </section>
@@ -676,8 +667,7 @@ done_testing;
   <section>
     <h2>Non-blocking</h2>
     <h2>UserAgent + Server</h2>
-    <!-- include ex/nb_doc_server.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/nb_doc_server.pl --><pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 use Mojo::UserAgent;
 use Mojo::URL;
@@ -712,8 +702,8 @@ __DATA__
 &lt;h1&gt;&lt;%= $module %&gt;&lt;/h1&gt;
 
 %== $pod
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/nb_doc_server.pl</p>
 
   </section>
 </section>
@@ -731,8 +721,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/websocket.pl -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/websocket.pl --><pre><code class="perl" data-trim>
 use Mojolicious::Lite;
 
 any &#39;/&#39; =&gt; &#39;index&#39;;
@@ -782,8 +771,8 @@ __DATA__
     plot.draw();
   };
 % end
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/websocket.pl</p>
 
   </section>
 </section>
@@ -803,8 +792,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/websocket.t -->
-<pre><code class="perl" data-trim>
+    <!-- include ex/websocket.t --><pre><code class="perl" data-trim>
 use Mojo::Base -strict;
 
 use Test::More;
@@ -829,8 +817,8 @@ $t-&gt;websocket_ok(&#39;/data&#39;)
 
 done_testing;
 
-
 </code></pre>
+<p style="float: right; text-color: white; font-size: small;">ex/websocket.t</p>
 
   </section>
 </section>
