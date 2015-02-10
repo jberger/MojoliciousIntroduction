@@ -468,11 +468,9 @@ use Mojo::Base -strict;
 use Mojo::UserAgent;
 
 my $ua = Mojo::UserAgent-&gt;new(max_redirects =&gt; 10);
-$ua-&gt;detect_proxy;
 
 say $ua-&gt;get(&#39;api.metacpan.org/v0/release/Mojolicious&#39;)
        -&gt;res-&gt;json-&gt;{version};
-
 
 use Mojo::URL;
 my $url = Mojo::URL-&gt;new(&#39;http://openlibrary.org/subjects/&#39;)
