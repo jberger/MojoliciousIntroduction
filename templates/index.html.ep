@@ -1,54 +1,11 @@
-<!doctype html>
-<html lang="en">
-
-	<head>
-		<meta charset="utf-8">
-
-		<title>Mojolicious Introduction</title>
-
-		<meta name="description" content="An introduction to the Mojolicious Web Framework">
-		<meta name="author" content="Joel Berger">
-
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/black.css" id="theme">
-
-		<!-- Code syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
-
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-
-		<!--[if lt IE 9]>
-		<script src="lib/js/html5shiv.js"></script>
-		<![endif]-->
-
-    <style>
-      .reveal pre code { padding: 20px }
-      code.hljs.inline { 
-        display: initial; 
-        font-size: 80%;
-        margin: 0 10px 0 10px;
-      }
-    </style>
-  
-  </head>
-
-	<body>
-
-		<div class="reveal">
-
-			<div class="slides">
+<style>
+  .reveal pre code { padding: 20px }
+  code.hljs.inline { 
+    display: initial; 
+    font-size: 80%;
+    margin: 0 10px 0 10px;
+  }
+</style>
 
 <section>
 
@@ -191,44 +148,7 @@ app->start;
     </ul>
   </section>
   <section>
-    <!-- include ex/hello.pl --><pre><code class="perl" data-trim>
-use Mojolicious::Lite;
-
-any &#39;/:name&#39; =&gt; { name =&gt; &#39;World&#39; } =&gt; sub { 
-  my $self = shift;
-  $self-&gt;stash( time =&gt; scalar localtime );
-  $self-&gt;render( &#39;hello&#39; );
-};
-
-app-&gt;start;
-
-__DATA__
-
-@@ layouts/basic.html.ep
-
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    %= content
-  &lt;/body&gt;
-&lt;html&gt;
-
-@@ hello.html.ep
-
-% layout &#39;basic&#39;;
-% title &quot;Hello $name&quot;;
-
-&lt;p&gt;Hello &lt;%= $name %&gt;&lt;/p&gt;
-
-%= tag p =&gt; begin
-  The time is now &lt;%= $time %&gt;
-% end
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/hello.pl</p>
-
+    %= include_code 'ex/hello.pl'
   </section>
 </section>
 
@@ -236,32 +156,7 @@ __DATA__
   <section>
     <h2>Testing "Hello User"</h2>
 
-    <!-- include ex/hello1.t --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-
-use Test::More;
-use Test::Mojo;
-
-use FindBin &#39;$Bin&#39;;
-require &quot;$Bin/hello.pl&quot;;
-
-my $t = Test::Mojo-&gt;new;
-
-$t-&gt;get_ok(&#39;/&#39;)
-  -&gt;status_is(200)
-  -&gt;content_like(qr/Hello World/)
-  -&gt;content_like(qr/\d{2}:\d{2}/);
-
-$t-&gt;get_ok(&#39;/Joel&#39;)
-  -&gt;status_is(200)
-  -&gt;content_like(qr/Hello Joel/)
-  -&gt;content_like(qr/\d{2}:\d{2}/);
-
-done_testing;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/hello1.t</p>
-
+    %= include_code 'ex/hello1.t'
   </section>
 
   <section>
@@ -299,25 +194,7 @@ done_testing;
   </section>
 
   <section>
-    <!-- include ex/dom_example.pl --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-use Mojo::DOM;
-
-my $html = &lt;&lt;&#39;END&#39;;
-  &lt;div class=&quot;something&quot;&gt;
-    &lt;h2&gt;Heading&lt;/h2&gt;
-    Bare text
-    &lt;p&gt;Important&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;else&quot;&gt;Ignore&lt;/div&gt;
-END
-
-my $dom = Mojo::DOM-&gt;new($html);
-say $dom-&gt;at(&#39;.something p&#39;)-&gt;text;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/dom_example.pl</p>
-
+    %= include_code 'ex/dom_example.pl'
   </section>
 </section>
 
@@ -339,32 +216,7 @@ say $dom-&gt;at(&#39;.something p&#39;)-&gt;text;
   </section>
 
   <section>
-    <!-- include ex/hello2.t --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-
-use Test::More;
-use Test::Mojo;
-
-use FindBin &#39;$Bin&#39;;
-require &quot;$Bin/hello.pl&quot;;
-
-my $t = Test::Mojo-&gt;new;
-
-$t-&gt;get_ok(&#39;/&#39;)
-  -&gt;status_is(200)
-  -&gt;text_is( p =&gt; &#39;Hello World&#39; )
-  -&gt;text_like( &#39;p:nth-of-type(2)&#39; =&gt; qr/\d{2}:\d{2}/ );
-
-$t-&gt;get_ok(&#39;/Joel&#39;)
-  -&gt;status_is(200)
-  -&gt;text_is( p =&gt; &#39;Hello Joel&#39; )
-  -&gt;text_like( &#39;p:nth-of-type(2)&#39; =&gt; qr/\d{2}:\d{2}/ );
-
-done_testing;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/hello2.t</p>
-
+    %= include_code 'ex/hello2.t'
   </section>
 </section>
 
@@ -396,54 +248,7 @@ done_testing;
   <section>
     <h2>Login App Example</h2>
 
-    <!-- include ex/login.pl --><pre><code class="perl" data-trim>
-use Mojolicious::Lite;
-
-helper validate =&gt; sub {
-  my ($self, $user, $pass) = @_;
-  state $users = {
-    joel =&gt; &#39;mypass&#39;,
-  };
-  return unless $users-&gt;{$user} eq $pass;
-  $self-&gt;session( user =&gt; $user );
-};
-
-any &#39;/&#39; =&gt; sub {
-  my $self = shift;
-  my ($user, $pass) = map {$self-&gt;param($_)} qw/user pass/;
-  $self-&gt;validate($user, $pass) if $user;
-  $self-&gt;render(&#39;index&#39;);
-};
-
-any &#39;/logout&#39; =&gt; sub {
-  my $self = shift;
-  $self-&gt;session( expires =&gt; 1 );
-  $self-&gt;redirect_to(&#39;/&#39;);
-};
-
-app-&gt;start;
-
-__DATA__
-
-@@ index.html.ep
-
-% my $user = session &#39;user&#39;;
-% title $user ? &quot;Welcome back \u$user&quot; : &quot;Not logged in&quot;;
-% layout &#39;basic&#39;;
-
-&lt;h1&gt;&lt;%= title %&gt;&lt;/h1&gt;
-
-% unless ($user) {
-  %= form_for &#39;/&#39; =&gt; method =&gt; &#39;POST&#39; =&gt; begin
-    Username: &lt;%= input_tag &#39;user&#39; %&gt; &lt;br&gt;
-    Password &lt;%= password_field &#39;pass&#39; %&gt; &lt;br&gt;
-    %= submit_button
-  % end
-% }
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/login.pl</p>
-
+    %= include_code 'ex/login.pl'
   </section>
 </section>
 
@@ -463,25 +268,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/ua_example.pl --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-use Mojo::UserAgent;
-
-my $ua = Mojo::UserAgent-&gt;new(max_redirects =&gt; 10);
-
-say $ua-&gt;get(&#39;api.metacpan.org/v0/release/Mojolicious&#39;)
-       -&gt;res-&gt;json-&gt;{version};
-
-use Mojo::URL;
-my $url = Mojo::URL-&gt;new(&#39;http://openlibrary.org/subjects/&#39;)
-                   -&gt;path(&#39;perl.json&#39;)
-                   -&gt;query( details =&gt; &#39;true&#39; );
-say $url;
-say $ua-&gt;get($url)-&gt;res-&gt;json(&#39;/works/0/title&#39;);
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/ua_example.pl</p>
-
+    %= include_code 'ex/ua_example.pl'
   </section>
 </section>
 
@@ -497,38 +284,7 @@ say $ua-&gt;get($url)-&gt;res-&gt;json(&#39;/works/0/title&#39;);
   </section>
 
   <section>
-    <!-- include ex/login.t --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-
-use Test::More;
-use Test::Mojo;
-
-use FindBin &#39;$Bin&#39;;
-require &quot;$Bin/login.pl&quot;;
-
-my $t = Test::Mojo-&gt;new;
-$t-&gt;ua-&gt;max_redirects( 2 );
-
-$t-&gt;get_ok(&#39;/&#39;)
-  -&gt;status_is(200)
-  -&gt;text_is( h1 =&gt; &#39;Not logged in&#39; )
-  -&gt;element_exists( &#39;form&#39; );
-
-my $login = { user =&gt; &#39;joel&#39;, pass =&gt; &#39;mypass&#39; };
-$t-&gt;post_ok( &#39;/&#39; =&gt; form =&gt; $login )
-  -&gt;status_is(200)
-  -&gt;text_like( h1 =&gt; qr/joel/i )
-  -&gt;element_exists_not( &#39;form&#39; );
-
-$t-&gt;get_ok(&#39;/logout&#39;)
-  -&gt;status_is(200)
-  -&gt;element_exists(&#39;form&#39;);
-
-done_testing;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/login.t</p>
-
+    %= include_code 'ex/login.t'
   </section>
 </section>
 
@@ -555,47 +311,7 @@ done_testing;
   </section>
 
   <section>
-    <!-- include ex/content.pl --><pre><code class="perl" data-trim>
-use Mojolicious::Lite;
-
-my %data = (
-  1 =&gt; { foo =&gt; &#39;bar&#39; },
-  2 =&gt; { baz =&gt; &#39;bat&#39; },
-);
-
-any &#39;/:id&#39; =&gt; sub {
-  my $self = shift;
-  return $self-&gt;reply-&gt;not_found
-    unless my $item = $data{$self-&gt;stash(&#39;id&#39;)};
-
-  $self-&gt;respond_to(
-    txt =&gt; { text =&gt; join(&#39;, &#39;, %$item) },
-    json =&gt; { json =&gt; $item },
-    any  =&gt; { 
-      format =&gt; &#39;html&#39;, 
-      template =&gt; &#39;page&#39;, 
-      foo =&gt; $item,
-    },
-  );
-};
-
-app-&gt;start;
-
-__DATA__
-
-@@ page.html.ep
-
-% my $key = (keys %$foo)[0];
-% title &quot;You wanted $key&quot;;
-% layout &#39;basic&#39;;
-
-&lt;p&gt;
-  All your &lt;%= $key %&gt; 
-  are belong to &lt;%= $foo-&gt;{$key} %&gt;
-&lt;/p&gt;
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/content.pl</p>
-
+    %= include_code 'ex/content.pl'
   </section>
 </section>
 
@@ -616,41 +332,7 @@ __DATA__
   </section>
 
   <section>
-  <!-- include ex/content.t --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-
-use Test::More;
-use Test::Mojo;
-
-use FindBin &#39;$Bin&#39;;
-require &quot;$Bin/content.pl&quot;;
-
-my $t = Test::Mojo-&gt;new;
-
-$t-&gt;get_ok(&#39;/0&#39;)
-  -&gt;status_is(404);
-
-$t-&gt;get_ok(&#39;/1&#39;)
-  -&gt;status_is(200)
-  -&gt;text_like( p =&gt; qr/foo.*?bar/ );
-
-$t-&gt;get_ok(&#39;/2?format=txt&#39;)
-  -&gt;status_is(200)
-  -&gt;content_is(&#39;baz, bat&#39;);
-
-$t-&gt;get_ok(&#39;/1.json&#39;)
-  -&gt;status_is(200)
-  -&gt;json_is({foo =&gt; &#39;bar&#39;});
-
-$t-&gt;get_ok(&#39;/2&#39;, { Accept =&gt; &#39;application/json&#39; })
-  -&gt;status_is(200)
-  -&gt;json_is(&#39;/baz&#39; =&gt; &#39;bat&#39;);
-
-done_testing;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/content.t</p>
-
+    %= include_code 'ex/content.t'
   </section>
 </section>
 
@@ -673,44 +355,7 @@ done_testing;
   <section>
     <h2>Non-blocking</h2>
     <h2>UserAgent + Server</h2>
-    <!-- include ex/nb_doc_server.pl --><pre><code class="perl" data-trim>
-use Mojolicious::Lite;
-use Mojo::UserAgent;
-use Mojo::URL;
-
-my $ua = Mojo::UserAgent-&gt;new;
-my $url = Mojo::URL-&gt;new(&#39;http://api.metacpan.org/pod/&#39;)
-                   -&gt;query( &#39;content-type&#39; =&gt; &#39;text/html&#39; );
-
-any &#39;/:module&#39; =&gt; { module =&gt; &#39;Mojolicious&#39; } =&gt; sub {
-  my $c = shift;
-  $c-&gt;render_later;
-
-  my $module = $c-&gt;stash(&#39;module&#39;);
-  my $target = $url-&gt;clone;
-  $target-&gt;path($module);
-
-  $ua-&gt;get( $target =&gt; sub {
-    my ($ua, $tx) = @_;
-    $c-&gt;render( &#39;docs&#39;, pod =&gt; $tx-&gt;res-&gt;body );
-  });
-};
-
-app-&gt;start;
-
-__DATA__
-
-@@ docs.html.ep
-
-% layout &#39;basic&#39;;
-% title $module;
-
-&lt;h1&gt;&lt;%= $module %&gt;&lt;/h1&gt;
-
-%== $pod
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/nb_doc_server.pl</p>
-
+    %= include_code 'ex/nb_doc_server.pl'
   </section>
 </section>
 
@@ -727,59 +372,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/websocket.pl --><pre><code class="perl" data-trim>
-use Mojolicious::Lite;
-
-any &#39;/&#39; =&gt; &#39;index&#39;;
-
-websocket &#39;/data&#39; =&gt; sub {
-  my $self = shift;
-  my $timer = Mojo::IOLoop-&gt;recurring( 1 =&gt; sub {
-    state $i = 0;
-    $self-&gt;send({ json =&gt; gen_data($i++) }); 
-  });
-
-  $self-&gt;on( finish =&gt; sub {
-    Mojo::IOLoop-&gt;remove($timer);
-  });
-};
-
-sub gen_data { 
-  my $x = shift; 
-  return [ $x, sin( $x + 2*rand() - 2*rand() ) ]
-}
-
-app-&gt;start;
-
-__DATA__
-
-@@ index.html.ep
-
-% layout &#39;basic&#39;;
-
-%= javascript &#39;/jquery-1.9.1.min.js&#39;
-%= javascript &#39;/jquery.flot.js&#39;
-
-&lt;div id=&quot;plot&quot; style=&quot;width:600px;height:300px&quot;&gt;
-&lt;/div&gt;
-
-%= javascript begin
-  var data = [];
-  var plot = $.plot($(&#39;#plot&#39;), [ data ]);
-
-  var url = &#39;&lt;%= url_for(&#39;data&#39;)-&gt;to_abs %&gt;&#39;;
-  var ws = new WebSocket( url );
-  ws.onmessage = function(e){
-    var point = JSON.parse(e.data);
-    data.push(point);
-    plot.setData([data]);
-    plot.setupGrid();
-    plot.draw();
-  };
-% end
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/websocket.pl</p>
-
+    %= include_code 'ex/websocket.pl'
   </section>
 </section>
 
@@ -798,34 +391,7 @@ __DATA__
   </section>
 
   <section>
-    <!-- include ex/websocket.t --><pre><code class="perl" data-trim>
-use Mojo::Base -strict;
-
-use Test::More;
-use Test::Mojo;
-
-use FindBin &#39;$Bin&#39;;
-require &quot;$Bin/websocket.pl&quot;;
-
-my $t = Test::Mojo-&gt;new;
-
-$t-&gt;get_ok(&#39;/&#39;)
-  -&gt;status_is(200)
-  -&gt;element_exists( &#39;#plot&#39; );
-
-$t-&gt;websocket_ok(&#39;/data&#39;)
-  -&gt;message_ok
-  -&gt;json_message_is( &#39;/0&#39; =&gt; 0 )
-  -&gt;json_message_has( &#39;/1&#39; )
-  -&gt;message_ok
-  -&gt;json_message_is( &#39;/0&#39; =&gt; 1 )
-  -&gt;finish_ok;
-
-done_testing;
-
-</code></pre>
-<p style="float: right; text-color: white; font-size: small;">ex/websocket.t</p>
-
+    %= include_code 'ex/websocket.t'
   </section>
 </section>
 
@@ -928,37 +494,4 @@ done_testing;
   
   <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 </section>
-			</div>
 
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.js"></script>
-
-		<script>
-
-			// Full list of configuration options available at:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				transition: 'slide', // none/fade/slide/convex/concave/zoom
-
-				// Optional reveal.js plugins
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true },
-					{ src: 'plugin/notes/notes.js', async: true }
-				]
-			});
-
-		</script>
-
-	</body>
-</html>
