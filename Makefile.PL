@@ -3,8 +3,7 @@ use ExtUtils::MakeMaker;
  
 WriteMakefile(
   PREREQ_PM => {
-    'Mojolicious' => '4', # arbitrary
-    'Mojolicious::Plugin::PPI' => 0,
-    'Mojolicious::Plugin::SimpleSlides' => 0,
+    'Mojolicious' => '6.0', # arbitrary
+    'Mojolicious::Plugin::RevealJS' => 0,
   },  
 );
