@@ -12,7 +12,7 @@
   <h1>Introduction to Mojolicious</h1>
 
   <p>
-    <a href="http://mojolicio.us" target="_blank"><img height="200px" src="public/unicorn.png"></a>
+    <a href="http://mojolicio.us" target="_blank"><img height="200px" src="unicorn.png"></a>
   </p>
 
 </section>
@@ -39,7 +39,7 @@
 <section>
   <h2>Getting Help</h2>
 
-  <img height="200px" style="float: left;" src="public/failraptor.png">
+  <img height="200px" style="float: left;" src="failraptor.png">
 
   <ul>
     <li><a href="http://mojolicio.us" target="_blank">http://mojolicio.us</a></li>
@@ -50,14 +50,14 @@
 
 <section>
   <h2>On with the talk...</h2>
-  <img src="public/oh-hai.jpg">
+  <img src="oh-hai.jpg">
 </section>
 
 <section>
   <section>
     <h2>What is Mojolicious?</h2>
 
-    <img src="public/noraptor.png">
+    <img src="noraptor.png">
 
     <ul>
       <li>A web framework for Perl</li>
@@ -176,7 +176,7 @@ app->start;
 <section>
     <h3> ... but do I really just have to regex the result??? </h3>
     
-    <img src="public/orly_owl.jpg">
+    <img src="orly_owl.jpg">
 </section>
 
 <section>
@@ -242,7 +242,7 @@ app->start;
     <h2>Sessions</h2>
     <p>Session info is signed and stored in a cookie</li>
 
-    <img src="public/eated-cookie-lolcat.jpg">
+    <img src="eated-cookie-lolcat.jpg">
   </section>
 
   <section>
@@ -292,7 +292,7 @@ app->start;
   <section>
     <h2>Content Negotiation</h2>
 
-    <img src="public/erm.jpg">
+    <img src="erm.jpg">
   </section>
 
   <section>
@@ -339,7 +339,7 @@ app->start;
 <section>
   <h2>Still not impressed?</h2>
 
-  <img src="public/mckayla.png">
+  <img src="mckayla.png">
 </section>
 
 <section>
@@ -484,7 +484,7 @@ app->start;
 <section>
   <h2>Thanks for listening!</h2>
 
-  <img src="public/cannot_be_unseen.jpg">
+  <img src="cannot_be_unseen.jpg">
 </section>
 
 <section>
