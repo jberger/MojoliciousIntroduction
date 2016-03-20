@@ -403,7 +403,7 @@ app->start;
     <ul>
       <li>
         Fetch, parse and extract resources from the internet
-        <pre><code class="bash">mojo get www.reddit.com/r/perl/ 'p.title > a.title' text</code></pre>
+        <pre><code class="bash">mojo get -r reddit.com/r/perl 'p.title > a.title' text</code></pre>
         <pre><code class="bash">mojo get http://api.metacpan.org/v0/module/CHI /version</code></pre>
       </li>
       <li>
