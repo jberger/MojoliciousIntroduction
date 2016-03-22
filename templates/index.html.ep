@@ -461,34 +461,57 @@ app->start;
 </section>
 
 <section>
-  <h2>If you liked that, see also</h2>
+  <section>
+    <h2>If you liked that, see also</h2>
 
-  <ul>
-    <li>
-      <a href="http://metacpan.org/module/Mojo::Pg">Mojo::Pg</a>
-      - The Mojolicious Postgres driver wrapper
-    </li>
-    <li>
-      <a href="http://metacpan.org/module/Minion">Minion</a>
-      - The Mojolicious job queue and plugin
-    </li>
-    <li>
-      <a href="http://metacpan.org/module/Galileo">Galileo</a>
-      - My CPAN friendly Mojolicious-based CMS
-    </li>
-    <li>
-      <a href="http://metacpan.org/module/Convos">Convos</a>
-      - The in-browser Mojolicious-based IRC client
-    </li>
-    <li>
-      <a href="http://metacpan.org/module/Mojolicious::Command::nopaste">Mojolicious::Command::nopaste</a>
-      - A Mojo-based nopaste clone with some cool extras (like IRC posting)
-    </li>
-    <li>
-      <a href="http://metacpan.org/module/Mojo::Redis2">Mojo::Redis2</a>
-      - Redis driver, great for messaging
-    </li>
-  </ul>
+    <ul>
+      <li>
+        <a href="http://metacpan.org/module/Mojo::Pg">Mojo::Pg</a>
+        - The Mojolicious Postgres driver wrapper
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Mojo::Redis2">Mojo::Redis2</a>
+        - Redis driver, great for messaging
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Minion">Minion</a>
+        - The Mojolicious job queue and plugin
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Galileo">Galileo</a>
+        - My CPAN friendly Mojolicious-based CMS
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Convos">Convos</a>
+        - The in-browser Mojolicious-based IRC client
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <ul>
+      <li>
+        <a href="http://metacpan.org/module/Mojolicious::Plugin::AssetPack">Mojolicious::Plugin::AssetPack</a>
+        - Compress and convert css, less, sass, javascript and coffeescript files
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Mojo::Phantom">Mojo::Phantom</a>
+        - Easily test your app's JavaScript (<a href="http://jberger.github.io/TestingWithPhantom/">YAPC</a>)
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Mojolicious::Plugin::MountPSGI">Mojolicious::Plugin::MountPSGI</a>
+        - Mount a non-Mojolicious app inside a Mojolicious one
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Test::Mojo::Role::PSGI">Test::Mojo::Role::PSGI</a>
+        - Test a non-Mojolicious app with Test::Mojo (Phantom works too!)
+      </li>
+      <li>
+        <a href="http://metacpan.org/module/Mojolicious::Command::nopaste">Mojolicious::Command::nopaste</a>
+        - A Mojo-based nopaste clone with some cool extras (like IRC posting)
+      </li>
+    </ul>
+  </section>
 </section>
 
 <section>
