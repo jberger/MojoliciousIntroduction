@@ -526,5 +526,7 @@ app->start;
   <p><a href="http://mojolicio.us">http://mojolicio.us</a></p>
 
   <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
+
+  <img style="" src="awesome.jpg">
 </section>
 
