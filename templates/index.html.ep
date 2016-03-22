@@ -1,7 +1,7 @@
 <style>
   .reveal pre code { padding: 20px }
-  code.hljs.inline { 
-    display: initial; 
+  code.hljs.inline {
+    display: initial;
     font-size: 80%;
     margin: 0 10px 0 10px;
   }
@@ -135,7 +135,7 @@ app->start;
       <li>handles all toplevel routes, including <code class="hljs inline">/</code>
         <ul>
           <li><code class="hljs inline">/Joel</code> becomes 'Hello Joel'</li>
-          <li><code class="hljs inline">/</code> is special cased to <code class="hljs inline">/World</code></li> 
+          <li><code class="hljs inline">/</code> is special cased to <code class="hljs inline">/World</code></li>
         </ul>
       </li>
       <li>stashes route matches</li>
@@ -175,7 +175,7 @@ app->start;
 
 <section>
     <h3> ... but do I really just have to regex the result??? </h3>
-    
+
     <img src="orly_owl.jpg">
 </section>
 
@@ -344,6 +344,10 @@ app->start;
 
 <section>
   <section>
+    <img src="sync.jpg">
+  </section>
+
+  <section>
     <h2>Let's write a POD website that</h2>
     <ul>
       <li>Requests module documentation from metacpan</li>
@@ -396,6 +400,12 @@ app->start;
 </section>
 
 <section>
+
+  <section>
+    <h2>Mojolicious Apps are More Than Just Web Apps</h2>
+
+    <img src="command.jpg">
+  </section>
 
   <section>
     <h2>Mojolicious::Commands</h2>
@@ -452,7 +462,7 @@ app->start;
 
 <section>
   <h2>If you liked that, see also</h2>
-  
+
   <ul>
     <li>
       <a href="http://metacpan.org/module/Mojo::Pg">Mojo::Pg</a>
@@ -491,7 +501,7 @@ app->start;
   <h2>Now go have fun with Mojolicious!</h2>
 
   <p><a href="http://mojolicio.us">http://mojolicio.us</a></p>
-  
+
   <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 </section>
 
