@@ -527,6 +527,6 @@ app->start;
 
   <pre><code>curl -L https://cpanmin.us | perl - -M https://cpan.metacpan.org -n Mojolicious</code></pre>
 
-  <img style="" src="awesome.jpg">
+  <img style="width: 25%" src="awesome.jpg">
 </section>
 
