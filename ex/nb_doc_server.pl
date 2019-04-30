@@ -1,4 +1,4 @@
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 use Mojo::UserAgent;
 use Mojo::URL;
 
@@ -6,8 +6,7 @@ my $ua = Mojo::UserAgent->new;
 my $url = Mojo::URL->new('http://api.metacpan.org/pod/')
                    ->query( 'content-type' => 'text/html' );
 
-any '/:module' => { module => 'Mojolicious' } => sub {
-  my $c = shift;
+any '/:module' => { module => 'Mojolicious' } => sub ($c) {
   $c->render_later;
 
   my $module = $c->stash('module');

@@ -13,7 +13,7 @@ $t->get_ok('/0')
 
 $t->get_ok('/1')
   ->status_is(200)
-  ->text_like( p => qr/foo.*?bar/ );
+  ->text_like( p => qr/foo.*?bar/ms );
 
 $t->get_ok('/2?format=txt')
   ->status_is(200)

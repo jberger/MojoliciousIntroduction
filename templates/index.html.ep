@@ -23,7 +23,7 @@
 
   <ul>
     <li>I first gave this talk at Chicago.pm on Feb 28, 2013</li>
-    <li>I updated it on March 21, 2016 for Milwaukee (Brew City) Perl Mongers</li>
+    <li>I last updated it on April 30, 2019</li>
     <li>The talk is hosted at <a href="http://jberger.github.io/MojoliciousIntroduction" target="_blank">http://jberger.github.io/MojoliciousIntroduction</a></li>
     <li>The source is available at <a href="https://github.com/jberger/MojoliciousIntroduction" target="_blank">https://github.com/jberger/MojoliciousIntroduction</a></li>
     <li>All code samples and all tests:
@@ -87,9 +87,9 @@
     <h2>Mojolicious::Lite</h2>
     <h4>"Hello World"</h4>
     <pre><code class="perl" data-trim>
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 
-any '/' => sub { shift->render( text => 'Hello World' ) };
+any '/' => sub ($c) { $c->render( text => 'Hello World' ) };
 
 app->start;
     </code></pre>

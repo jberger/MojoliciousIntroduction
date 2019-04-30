@@ -1,9 +1,8 @@
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 
-any '/:name' => { name => 'World' } => sub { 
-  my $self = shift;
-  $self->stash( time => scalar localtime );
-  $self->render( 'hello' );
+any '/:name' => { name => 'World' } => sub ($c) { 
+  $c->stash( time => scalar localtime );
+  $c->render( 'hello' );
 };
 
 app->start;

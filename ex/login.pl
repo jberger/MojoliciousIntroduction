@@ -1,25 +1,22 @@
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 
-helper validate => sub {
-  my ($self, $user, $pass) = @_;
+helper validate => sub ($c, $user, $pass) {
   state $users = {
     joel => 'mypass',
   };
   return unless $users->{$user} eq $pass;
-  $self->session( user => $user );
+  $c->session( user => $user );
 };
 
-any '/' => sub {
-  my $self = shift;
-  my ($user, $pass) = map {$self->param($_)} qw/user pass/;
-  $self->validate($user, $pass) if $user;
-  $self->render('index');
+any '/' => sub ($c) {
+  my ($user, $pass) = map {$c->param($_)} qw/user pass/;
+  $c->validate($user, $pass) if $user;
+  $c->render('index');
 };
 
-any '/logout' => sub {
-  my $self = shift;
-  $self->session( expires => 1 );
-  $self->redirect_to('/');
+any '/logout' => sub ($c) {
+  $c->session( expires => 1 );
+  $c->redirect_to('/');
 };
 
 app->start;

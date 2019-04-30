@@ -1,21 +1,19 @@
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 
 any '/' => 'index';
 
-websocket '/data' => sub {
-  my $self = shift;
+websocket '/data' => sub ($c) {
   my $timer = Mojo::IOLoop->recurring( 1 => sub {
     state $i = 0;
-    $self->send({ json => gen_data($i++) }); 
+    $c->send({ json => gen_data($i++) }); 
   });
 
-  $self->on( finish => sub {
+  $c->on( finish => sub {
     Mojo::IOLoop->remove($timer);
   });
 };
 
-sub gen_data { 
-  my $x = shift; 
+sub gen_data ($x) { 
   return [ $x, sin( $x + 2*rand() - 2*rand() ) ]
 }
 

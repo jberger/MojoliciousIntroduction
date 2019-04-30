@@ -1,16 +1,15 @@
-use Mojolicious::Lite;
+use Mojolicious::Lite -signatures;
 
 my %data = (
   1 => { foo => 'bar' },
   2 => { baz => 'bat' },
 );
 
-any '/:id' => sub {
-  my $self = shift;
-  return $self->reply->not_found
-    unless my $item = $data{$self->stash('id')};
+any '/:id' => sub ($c) {
+  return $c->reply->not_found
+    unless my $item = $data{$c->stash('id')};
 
-  $self->respond_to(
+  $c->respond_to(
     txt => { text => join(', ', %$item) },
     json => { json => $item },
     any  => { 
